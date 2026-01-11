@@ -48,11 +48,10 @@ export default function RegisterPage() {
         } catch (err) {
             console.log("AXIOS ERROR FULL:", err);
   console.log("RESPONSE:", err.response);
-  alert(
+  toast.error(
     err.response?.status + " " +
     JSON.stringify(err.response?.data)
   );
-            toast.error(err.response?.data?.message || "Something went wrong");
         }
     }
 
