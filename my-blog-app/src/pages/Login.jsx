@@ -24,7 +24,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${API_URL}/api/login`, loginData, { withCredentials: true } );
+            const response = await axios.post(`${API_URL}/login`, loginData, { withCredentials: true } );
             
             if (response.data.success) { 
                 setUser(response.data.user)

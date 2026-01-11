@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
         try {
 
-            const response = await axios.post(`${API_URL}/api/register`, formData, { withCredentials: true})
+            const response = await axios.post(`${API_URL}/register`, formData, { withCredentials: true})
             toast.success(response.data.message)
 
             if (response.data.success) {
