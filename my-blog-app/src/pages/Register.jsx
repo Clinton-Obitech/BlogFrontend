@@ -4,6 +4,8 @@ import styles from './Page.module.css'
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const API_URL = import.meta.env.MODE === 'production' ? import.meta.VITE_API_URL : "/api";
+
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
         firstname: "",
@@ -24,7 +26,7 @@ export default function RegisterPage() {
 
         try {
 
-            const response = await axios.post("/api/register", formData, { withCredentials: true})
+            const response = await axios.post(`${API_URL}/api/register`, formData, { withCredentials: true})
             toast.success(response.data.message)
 
             if (response.data.success) {
