@@ -6,8 +6,6 @@ import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "./AuthContext"
 
-const API_URL = import.meta.env.MODE === 'production' ? import.meta.VITE_API_URL : "/api";
-
 export default function LoginPage() {
     const { setUser } = useAuth();
     const [loginData, setLoginData] = useState({
@@ -17,6 +15,8 @@ export default function LoginPage() {
 
     const navigate = useNavigate();
 
+    const API_URL = process.env.REACT_APP_API_URL;
+
     const HandleData = (e) => {
         setLoginData({...loginData, [e.target.name]: e.target.value});
     }
@@ -24,7 +24,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${API_URL}/login`, loginData, { withCredentials: true } );
+            const response = await axios.post(`${API_URL}/api/login`, loginData, { withCredentials: true } );
             
             if (response.data.success) { 
                 setUser(response.data.user)
