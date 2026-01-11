@@ -1,0 +1,10 @@
+.mini_hero {
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.mini_hero h1 {
+    color: white;
+    text-align: center;
+    padding-top: 3rem;
+}

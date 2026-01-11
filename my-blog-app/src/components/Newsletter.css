@@ -1,0 +1,38 @@
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto 0.5rem;
+    border: 1.3px solid black;
+    align-items: center;
+    padding: 1rem;
+    font-family: sans-serif;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px teal;
+}
+
+.newsletter h3 {
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0 0.4rem;
+}
+
+.newsletter input[type=submit] {
+    margin: 0 0 0 1rem;
+    border: none;
+    background-color: teal;
+    color: white;
+}
+
+.newsletter input {
+    padding: 0.5rem;
+    border: 1.3px solid black;
+    border-radius: 5px;
+}

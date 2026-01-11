@@ -1,0 +1,59 @@
+.NavLink {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    white-space: nowrap;
+    list-style-type: none;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    background-color: white;
+    margin: 0.5rem 0;
+}
+
+.NavLink i {
+    font-size: 2rem;
+    margin-left: 1rem;
+    color: teal;
+}
+
+.Links {
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 0.3rem;
+    border: 1.3px solid rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px teal;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: lighter;
+}
+
+.home {
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 0.3rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: lighter;
+}
+
+.active {
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 0.3rem;
+    border-radius: 4px;
+}

@@ -1,0 +1,52 @@
+.sideNav {
+    padding: 0 0.2rem 0 0.3rem;
+}
+
+.sideNav > i {
+    font-size: 1.1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.9);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 0.3rem;
+    border: 1.3px solid rgba(0, 0, 0, 0.9);
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px teal;
+}
+
+.sideNav > .dropDiv {
+    background-color: white;
+    padding: 1rem;
+    position: absolute;
+    width: 60%;
+    height: 100vh;
+    left: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.logoutBtn {
+    border: none;
+    padding: 0.3rem 1.5rem;
+    background-color: teal;
+    border-radius: 4px;
+    color: white;
+}
+
+.logoutBtn {
+    align-self: self-start;
+}
+
+.userInfoBtn {
+    border: none;
+    padding: 0.4rem 0.4rem 0.4rem 1rem;
+    width: 80%;
+    margin-top: 1rem;
+    color: teal;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: left;
+}

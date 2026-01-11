@@ -1,0 +1,169 @@
+.form {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form input {
+    margin: 0 auto 1rem;
+    border: 1.5px solid teal;
+    padding: 0.3rem;
+    border-radius: 4px;
+    width: 80%;
+}
+
+.error, .message, .noBlogsForDate {
+    width: 95%;
+    padding: 3rem 0;
+    margin: 2rem auto;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.form legend{
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form button {
+    background-color: teal;
+    padding: 0.5rem;
+    width: 50%;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.blog {
+    margin: 1rem;
+    box-shadow: 0px 0px 3px black;
+    padding: 0.4rem;
+    border-radius: 6px;
+}
+
+.blog img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.blog p {
+    text-align: left;
+    padding: 0 0.2rem;
+    font-size: 1.2rem;
+    height: 100px;
+    overflow: hidden;
+}
+
+.blog h4 {
+    color: gray;
+    margin: 1rem 0.5rem;
+}
+
+.blog h4 span {
+    color: black;
+    font-size: 1rem;
+    box-shadow: 0px 0px 2px black;
+    padding: 0.3rem;
+    border-radius: 5px;
+    margin-right: 0.5rem;
+}
+
+.continue {
+    background-color: teal;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    color: white;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+
+.blog button > i {
+    margin-right: 0.2rem;
+    box-shadow: 0px 0px 2px black;
+    padding: 0.2rem 0.3rem;
+    border-radius: 5px;
+}
+
+.blog .rate {
+    padding: 0.3rem 0 0 0.5rem;
+}
+
+.blog .rate button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+}
+
+.rate .like i {
+    color: green;
+}
+
+.heart i {
+    color: #e0245e; 
+}
+
+.laugh i {
+    color: #f7b928; 
+}
+
+.dislike i {
+    color: #65676b;
+}
+
+.blogsNavigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 0.5rem;
+}
+
+.blogsNavigation > button {
+    border: 1.5px solid white;
+    box-shadow: 0px 0px 3px black;
+    padding: 0.5rem;
+    background-color: teal;
+    border-radius: 5px;
+    color: white;
+    flex-basis: 25%;
+}
+
+.blogsNavigation > input {
+    border: none;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.userInfo > ul {
+    list-style-type: none;
+    box-shadow: 0px 0px 3px black;
+    padding: 0.5rem 1rem 1rem;
+    border-radius: 5px;
+}
+
+.userInfo > ul li {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.userInfo > ul li span {
+    background-color: rgba(0,0,0,0.9);
+    color: white;
+    padding: 0.3rem 0.5rem;
+    border-radius: 3px;
+    color: teal;
+    margin-right: 0.5rem;
+}
+
+.userInfo > ul h2 {
+    margin-bottom: 0.5rem;
+}

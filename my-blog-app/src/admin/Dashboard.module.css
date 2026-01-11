@@ -1,0 +1,21 @@
+.adminHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: teal;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.adminHeader h2 {
+    color: white;
+    text-transform: capitalize;
+}
+
+.adminHeader button {
+    padding: 0.2rem 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 1.4px solid white;
+    border-radius: 3px;
+}

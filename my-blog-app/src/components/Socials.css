@@ -1,0 +1,65 @@
+.socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 3px teal;
+}
+
+.socials span {
+    text-align: center;
+    background-color: teal;
+    padding: 1rem 1.5rem;
+    color: white;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+}
+
+.icon {
+    flex-grow: 1;
+    padding: 0.7rem 0;
+}
+
+.socials div {
+    text-align: center;
+    background-color: white;
+}
+
+.socials i {
+    font-size: 1.9rem;
+}
+
+.whatsapp {
+    color: #25D366;
+}
+
+.twitter {
+    color: #000000;
+}
+
+.instagram {
+    background: linear-gradient(
+        45deg,
+        #833AB4,
+        #E1306C,
+        #FD1D1D,
+        #FCAF45
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.tiktok {
+    background: linear-gradient(
+        45deg,
+        #69C9D0,
+        #EE1D52
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

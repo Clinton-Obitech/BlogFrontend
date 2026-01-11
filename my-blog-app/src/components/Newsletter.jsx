@@ -1,0 +1,46 @@
+import { useState } from 'react'
+import './Newsletter.css'
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+export default function Newsletter() {
+    const [email, setEmail] = useState({
+        email: ""
+    });
+
+    const HandleEmail = (e) => {
+        setEmail({...email, [e.target.name]: e.target.value})
+    }
+
+    const SubmitEmail = async (e) => {
+
+        e.preventDefault();
+        try {
+            const response = await axios.post("/api/newsletter", email);
+            toast.success(response.data.message)
+        } catch (err) {
+            toast.error(err.response?.data?.message)
+        }
+        setEmail({
+            email: ""
+        })
+    }
+    return (
+        <section className="newsletter">
+         <h3>subscribe to our newsletter</h3>
+         <form onSubmit={SubmitEmail}>
+
+         <input 
+         type="email" 
+         name="email" 
+         value={email.email}
+         placeholder="enter your email" 
+         onChange={HandleEmail}
+         />
+
+         <input type="submit" value="subscribe" />
+
+         </form>
+        </section>
+    )
+}

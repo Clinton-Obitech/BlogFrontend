@@ -1,0 +1,142 @@
+.adminNews h3 {
+    text-align: center;
+    margin: 1rem 0;
+    color: teal;
+}
+
+.adminNews form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: 1rem;
+}
+
+.adminNews form label {
+    text-transform: lowercase;
+    padding: 0.3rem;
+}
+
+.adminNews form input {
+    width: 70%;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem;
+    border: 1.5px solid black;
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-left: 0.4rem;
+}
+
+.adminNews form input[type=file] {
+    border: none;
+}
+
+.adminNews form textarea {
+    width: 100%;
+    height: 120px;
+    border: 1.5px solid black;
+    border-radius: 4px;
+    padding: 0.3rem;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+}
+
+.adminNews form button {
+    width: 50%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: none;
+    background-color: teal;
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.view {
+    padding: 0 0 0.5rem;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+    min-width: 90%;
+    margin: 0.5rem 1rem 0.5rem 0.5rem;
+}
+
+.view > img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.view > h3 {
+    padding: 0.3rem 0.5rem 0.1rem;
+    margin: 0;
+    text-align: left;
+    color: black;
+    text-transform: uppercase;
+}
+
+.view > p {
+    padding: 0.5rem;
+    text-align: justify;
+    height: 100px;
+    overflow: hidden;
+}
+
+.view > h5 {
+    padding: 0.5rem 0.5rem 0;
+}
+
+.view > h4 {
+    margin-left: 1rem;
+}
+
+.ratebtn {
+    padding: 0.2rem 0.5rem;
+    margin-left: 1rem;
+}
+
+.ratebtn button {
+    font-size: 1.4rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: white;
+}
+
+.ratebtn button span {
+    margin-left: 0.2rem;
+}
+
+.viewContainer {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 95%;
+    margin: 0 auto 2rem;
+}
+
+.editBtn {
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: darkblue;
+    color: white;
+}
+
+.deleteBtn {
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    margin-left: 0.4rem;
+}
+
+.cancelBtn {
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: grey;
+    color: white;
+    margin-left: 0.4rem;
+}
+
+.modBtn {
+    padding: 0.5rem 0.5rem 0;
+}
