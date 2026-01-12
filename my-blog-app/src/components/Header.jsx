@@ -9,15 +9,20 @@ import api from "../api/axios.js";
 
 function Header() {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
+    const cached = localStorage.getItem("username");
+    if (cached) {
+      setUsername(cached);
+      return;
+    }
     const getUser = async () => {
       const res = await api.get("/api/home");
       setUser(res.data.user)
-      setLoading(false)
+      localStorage.setItem("username", res.data.user.username)
     }
   getUser();
 }, []);
@@ -46,7 +51,7 @@ function Header() {
           {user ? 
           <div style={userStyle}>
             <div style={{height: "25px", width: "25px", borderRadius: "100%", backgroundColor: "green"}}></div>
-            <h3 style={{marginLeft: "0.2rem"}}>{user.username}</h3>
+            <h3 style={{marginLeft: "0.2rem"}}>{username}</h3>
           </div>
            : 
           <NavLink style={{fontSize: "1.2rem", textDecoration: "none", color: "black"}} to='/Login'><i style={{color: "teal"}} className="fa-solid fa-user"></i> Sign in</NavLink>}
