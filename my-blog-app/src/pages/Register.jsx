@@ -15,8 +15,6 @@ export default function RegisterPage() {
 
     const navigate = useNavigate();
 
-    const API_URL = process.env.REACT_APP_API_URL;
-
     const HandleData = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
@@ -25,8 +23,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-
-            const response = await axios.post(`${API_URL}/api/register`, formData, { withCredentials: true})
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, formData, { withCredentials: true})
             toast.success(response.data.message)
 
             if (response.data.success) {
@@ -46,12 +43,7 @@ export default function RegisterPage() {
         }
 
         } catch (err) {
-            console.log("AXIOS ERROR FULL:", err);
-  console.log("RESPONSE:", err.response);
-  toast.error(
-    err.response?.status + " " +
-    JSON.stringify(err.response?.data)
-  );
+        toast.error(err.response?.data?.message || "Something went wrong");
         }
     }
 
