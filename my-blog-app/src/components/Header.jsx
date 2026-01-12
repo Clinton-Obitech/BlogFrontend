@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import { NavLink } from 'react-router-dom'
-import axios from 'axios';
 import './Nav.css'
 import styles from "./Header.module.css";
 import SideNav from './SideNav.jsx';
+import api from "../api/axios.js";
 
 function Header() {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ function Header() {
 
   useEffect(() => {
     const getUser = async () => {
-      const res = await axios.get("/api/home", { withCredentials:true });
+      const res = await api.get("/api/home");
       setUser(res.data.user)
     }
   getUser();
