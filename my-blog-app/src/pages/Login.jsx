@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import styles from "./Page.module.css"
-import axios from "axios"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "./AuthContext"
+import api from "../api/axios.js"
 
 export default function LoginPage() {
     const { setUser } = useAuth();
@@ -22,7 +22,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://blog-backend-wh4q.onrender.com/api/login", loginData, { withCredentials: true } );
+            const response = await api.post("/api/login", loginData);
             
             if (response.data.success) { 
                 setUser(response.data.user)
