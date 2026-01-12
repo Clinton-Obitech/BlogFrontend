@@ -64,7 +64,7 @@ function Header() {
             <h3 style={{marginLeft: "0.2rem"}}>{user?.username ?? "..."}</h3>
           </div>
            : 
-          <NavLink style={{fontSize: "1.2rem", textDecoration: "none", color: "black"}} to='/Login'><i style={{color: "teal"}} className="fa-solid fa-user"></i> Sign in</NavLink>}
+          <NavLink style={{fontSize: "1.2rem", textDecoration: "none", color: "black"}} to='/login'><i style={{color: "teal"}} className="fa-solid fa-user"></i> Sign in</NavLink>}
           </div>
           </div>
 
