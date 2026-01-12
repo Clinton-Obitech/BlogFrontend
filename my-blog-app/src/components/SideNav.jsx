@@ -1,6 +1,6 @@
 import styles from "./components.module.css";
 import { useEffect, useState } from 'react'
-import axios from "axios";
+import api from "../api/axios.js";
 import UserInfo from "../pages/UserInfo.jsx";
 
 export default function SideNav({user, setUser}) {
@@ -20,7 +20,7 @@ export default function SideNav({user, setUser}) {
   }, [menuOpen])
 
     const logOut = async () => {
-      await axios.post("/api/logout", {}, { withCredentials:true });
+      await api.post("/api/logout", {});
       setMenuOpen(false)
       setUser(null)
     }

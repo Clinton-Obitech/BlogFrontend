@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/axios.js";
 import { useEffect, useState } from "react"
 import styles from "./Page.module.css"
 
@@ -7,7 +7,7 @@ export default function UsersInfo() {
 
     useEffect(() => {
         const fetchUserInfo = async () => {
-            const res = await axios.get("/api/user", { withCredentials: true})
+            const res = await api.get("/api/user")
             setUser(res.data.user)
         }
         fetchUserInfo();
