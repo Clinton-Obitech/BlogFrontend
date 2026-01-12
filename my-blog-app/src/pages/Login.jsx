@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom"
 import api from "../api/axios.js"
 
 export default function LoginPage() {
-    const { setUser } = useAuth();
     const [loginData, setLoginData] = useState({
         username: "",
         password: "",
