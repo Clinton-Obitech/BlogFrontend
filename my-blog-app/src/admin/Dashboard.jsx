@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Dashboard.module.css"
 import api from "../api/axios.js";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
     const cachedAdmin = JSON.parse(localStorage.getItem("admin"));
@@ -23,6 +24,8 @@ export default function Dashboard() {
             }
             } catch (err) {
             console.error(err);
+            navigate("/", {replace: true})
+            toast.error(err.response?.data?.message)
             if (!ignore) setAdmin({username: "Admin"})
             }
         }
