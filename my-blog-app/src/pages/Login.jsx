@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom"
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom"
-import { useAuth } from "./AuthContext"
 import api from "../api/axios.js"
 
 export default function LoginPage() {
