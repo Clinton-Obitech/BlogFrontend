@@ -23,7 +23,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, formData, { withCredentials: true})
+            const response = await axios.post("https://blog-backend-wh4q.onrender.com/api/register", formData, { withCredentials: true})
             toast.success(response.data.message)
 
             if (response.data.success) {

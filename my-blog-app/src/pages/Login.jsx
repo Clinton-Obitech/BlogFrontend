@@ -22,7 +22,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, loginData, { withCredentials: true } );
+            const response = await axios.post("https://blog-backend-wh4q.onrender.com/api/login", loginData, { withCredentials: true } );
             
             if (response.data.success) { 
                 setUser(response.data.user)
