@@ -33,6 +33,7 @@ export default function Dashboard() {
         await api.post("/api/logout", {})
         setAdmin(null)
         navigate("/admin/login", {replace: true})
+        localStorage.removeItem("admin")
     }
 
    return (
