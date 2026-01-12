@@ -46,14 +46,14 @@ export default function App() {
       </Route>
 
       <Route element={<AuthLayout />}>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/Login" element={<LoginPage />} />
+      <Route path="/Register" element={<RegisterPage />} />
       <Route path="/admin/register" element={<RegisterAdmin />} />
       <Route path="/admin/login" element={<LoginAdmin />} />
       </Route>
 
       <Route element={<AdminLayout />}>
-      <Route path="/admin/dashboard" element={<Dashboard />} />
+      <Route path="/admin/Dashboard" element={<Dashboard />} />
       <Route path="/admin/Inside" element={<AdminInside />} />
       <Route path="/admin/Government" element={<AdminGovernment />} />
       <Route path="/admin/Entertainment" element={<AdminEntertainment />} />
