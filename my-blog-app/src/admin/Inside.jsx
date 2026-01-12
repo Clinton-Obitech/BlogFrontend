@@ -3,6 +3,7 @@ import styles from "./Admin.module.css";
 import { toast } from "react-toastify";
 import { useState, useRef } from "react";
 import { useEffect } from "react";
+import api from "../api/axios.js";
 
 function ViewCard({ view, onEdit, onDelete }) {
     const [count, setCount] = useState({
@@ -116,10 +117,9 @@ export default function AdminInside() {
                 formData.append(key, value)
             );
 
-            const res = await axios.post(
+            const res = await api.post(
                 "/api/admin/inside",
-                formData,
-                { withCredentials: true }
+                formData
             );
 
             toast.success(res.data.message);
