@@ -42,7 +42,7 @@ export default function Dashboard() {
 
    return (
     <div className={styles.adminHeader}>
-    {admin ? <h1>{admin.username} Dashboard</h1> : <h1>Dashboard</h1>}
+    {admin ? <h2>{admin.username} Dashboard</h2> : <h2>Loading...</h2>}
     <button onClick={logOut}>Logout</button>
     </div>
    )
