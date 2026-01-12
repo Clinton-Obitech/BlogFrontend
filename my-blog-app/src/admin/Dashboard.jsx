@@ -27,6 +27,10 @@ export default function Dashboard() {
             }
         }
         getAdmin();
+
+        return () => {
+        ignore = true;
+        }
     }, [])
 
     const logOut = async () => {
