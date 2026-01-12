@@ -23,6 +23,7 @@ export default function SideNav({user, setUser}) {
       await api.post("/api/logout", {});
       setMenuOpen(false)
       setUser(null)
+      localStorage.removeItem("user")
     }
   const navItems = [
     {key: "user", label: "User Information", component: <UserInfo />},

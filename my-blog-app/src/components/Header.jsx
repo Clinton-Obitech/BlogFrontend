@@ -8,23 +8,33 @@ import SideNav from './SideNav.jsx';
 import api from "../api/axios.js";
 
 function Header() {
-  const [user, setUser] = useState(null);
-  const [username, setUsername] = useState(null);
+  const cachedUser = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(cachedUser);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const cached = localStorage.getItem("username");
-    if (cached) {
-      setUsername(cached);
-      return;
-    }
+    if (cachedUser) return;
+
+    let ignore = false;
+
     const getUser = async () => {
-      const res = await api.get("/api/home");
-      setUser(res.data)
-      localStorage.setItem("username", res.data.username)
+      try {
+        const res = await api.get("/api/home");
+        if (!ignore) {
+        setUser(res.data.user)
+        localStorage.setItem("user", JSON.stringify(res.data.user))
+      }
+      } catch (err) {
+        console.error(err);
+        if (!ignore) setUser({username: "User"})
+      }
     }
   getUser();
+
+  return () => {
+    ignore = true;
+  }
 }, []);
 
   const navHome = () => {
