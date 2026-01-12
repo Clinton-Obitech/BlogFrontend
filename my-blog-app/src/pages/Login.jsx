@@ -23,7 +23,6 @@ export default function LoginPage() {
             const response = await api.post("/api/login", loginData);
             
             if (response.data.success) { 
-                setUser(response.data.user)
                 toast.success(response.data.message)
                 setTimeout(() => {
                     navigate("/", {replace: true})
