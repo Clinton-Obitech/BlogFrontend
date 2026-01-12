@@ -1,32 +1,38 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Dashboard.module.css"
-import axios from "axios";
-import { toast } from "react-toastify";
+import api from "../api/axios.js";
 
 export default function Dashboard() {
-    const [admin, setAdmin] = useState(null)
+    const cachedAdmin = JSON.parse(localStorage.getItem("admin"));
+    const [admin, setAdmin] = useState(cachedAdmin)
 
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (cachedAdmin) return;
+
+        let ignore = false; 
+
         const getAdmin = async () => {
             try {
-            const res = await axios.get("/api/admin/dashboard", { withCredentials: true })
-            setAdmin(res.data.admin)
+            const res = await api.get("/api/admin/dashboard")
+            if (!ignore) {
+            setUser(res.data.admin)
+            localStorage.setItem("user", JSON.stringify(res.data.admin))
+            }
             } catch (err) {
-            setAdmin(null)
-            toast.error(err.response?.data?.message);
-            navigate("/", {replace: true})
+            console.error(err);
+            if (!ignore) setAdmin({username: "Admin"})
             }
         }
         getAdmin();
     }, [])
 
     const logOut = async () => {
-        await axios.post("/api/logout", {}, { withCredentials:true })
+        await api.post("/api/logout", {})
         setAdmin(null)
-        navigate("/admin/Login", {replace: true})
+        navigate("/admin/login", {replace: true})
     }
 
    return (
