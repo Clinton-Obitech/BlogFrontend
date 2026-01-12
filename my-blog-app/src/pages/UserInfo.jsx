@@ -4,14 +4,18 @@ import styles from "./Page.module.css"
 
 export default function UsersInfo() {
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             const res = await api.get("/api/user")
             setUser(res.data.user)
+            setLoading(false)
         }
         fetchUserInfo();
     }, [])
+
+    if (loading) return (<h3>Loading...</h3>)
     return (
         <div className={styles.userInfo}>
             <ul>
