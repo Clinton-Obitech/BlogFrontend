@@ -18,7 +18,7 @@ export default function Dashboard() {
             try {
             const res = await api.get("/api/admin/dashboard")
             if (!ignore) {
-            setUser(res.data.admin)
+            setAdmin(res.data.admin)
             localStorage.setItem("admin", JSON.stringify(res.data.admin))
             }
             } catch (err) {
