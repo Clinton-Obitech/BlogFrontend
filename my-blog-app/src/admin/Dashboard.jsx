@@ -5,7 +5,7 @@ import api from "../api/axios.js";
 
 export default function Dashboard() {
     const cachedAdmin = JSON.parse(localStorage.getItem("admin"));
-    const [admin, setAdmin] = useState(cachedAdmin)
+    const [admin, setAdmin] = useState(cachedAdmin);
 
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function Dashboard() {
             const res = await api.get("/api/admin/dashboard")
             if (!ignore) {
             setUser(res.data.admin)
-            localStorage.setItem("user", JSON.stringify(res.data.admin))
+            localStorage.setItem("admin", JSON.stringify(res.data.admin))
             }
             } catch (err) {
             console.error(err);
