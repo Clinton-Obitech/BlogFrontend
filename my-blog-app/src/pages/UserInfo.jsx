@@ -15,7 +15,7 @@ export default function UsersInfo() {
         fetchUserInfo();
     }, [])
 
-    if (loading) return (<h3 className={styles.userInfo}>Loading...</h3>)
+    if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading...</h3>)
     return (
         <div className={styles.userInfo}>
             <ul>

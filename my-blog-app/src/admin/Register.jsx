@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import styles from "../pages/Page.module.css";
-import axios from "axios";
+import api from "../api/axios.js";
 import { toast } from "react-toastify";
 
 export default function RegisterAdmin() {
@@ -22,7 +22,7 @@ export default function RegisterAdmin() {
 
         try {
 
-            const response = await axios.post("/api/register/admin", formData, { withCredentials:true })
+            const response = await api.post("/api/register/admin", formData)
             toast.success(response.data.message)
 
             if (response.data.success) {

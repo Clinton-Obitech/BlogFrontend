@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import styles from "../pages/Page.module.css";
-import axios from "axios";
 import { toast } from "react-toastify";
+import api from "../api/axios.js"
 
 export default function LoginAdmin() {
     const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ export default function LoginAdmin() {
 
         try {
 
-            const response = await axios.post("/api/login/admin", formData, { withCredentials:true })
+            const response = await api.post("/api/login/admin", formData)
             toast.success(response.data.message)
 
             if (response.data.success) {
