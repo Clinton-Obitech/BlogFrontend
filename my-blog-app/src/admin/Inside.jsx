@@ -33,7 +33,7 @@ function ViewCard({ view, onEdit, onDelete }) {
                 <h3>{view.title}</h3>
 
                 <img
-                    src={`https://blog-backend-wh4q.onrender.com/${view.image}`}
+                    src={`https://blog-backend-wh4q.onrender.com${view.image}`}
                     alt={view.title}
                 />
 
