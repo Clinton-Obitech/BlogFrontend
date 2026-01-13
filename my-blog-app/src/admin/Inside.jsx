@@ -206,7 +206,7 @@ export default function AdminInside() {
 
     useEffect(() => {
         const fetchBlogs = async () => {
-            const res = await axios.get("/api/admin/inside");
+            const res = await api.get("/api/admin/inside");
             if(res.data.blogs) {
             setView(res.data.blogs);
             }
@@ -217,7 +217,7 @@ export default function AdminInside() {
     return (
         <main className={styles.adminNews}>
             <h3>MANAGE INSIDE NAIJA</h3>
-            {loading && <h1>Loading</h1>}
+            {loading && <h2 className="loading">Loading</h2>}
             <form ref={formRef} onSubmit={editMode ? HandleUpdate : HandleSubmit}>
                 <label>Title
                 <input name="title" 

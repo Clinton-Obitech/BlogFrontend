@@ -5,3 +5,12 @@
   font-weight: lighter;
   font-family: sans-serif;
 }
+
+.loading {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  width: 50%;
+  text-align: center;
+  border: 1.5px solid black;
+}

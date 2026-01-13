@@ -1,6 +1,7 @@
 import Mini_hero from "../components/Mini_hero"
 import { useEffect, useState } from "react"
-import axios from "axios"
+import api from "../api/axios.js";
+import axios from "axios";
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
@@ -70,13 +71,12 @@ function BlogCard({blog}) {
     )
 }
 
-
 export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);;
 
     const getBlogs = async (selectedDate) => {
-        const res = await axios.get(`/api/inside?date=${selectedDate}`)
+        const res = await api.get(`/api/inside?date=${selectedDate}`)
         setBlogs(res.data.blogs)
     }
 
