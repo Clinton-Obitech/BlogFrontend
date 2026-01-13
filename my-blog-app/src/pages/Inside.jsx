@@ -37,27 +37,27 @@ function BlogCard({blog}) {
         }
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         const blogId = blog.id;
         const getReactions = async () => {
 
             const res = await axios.get(`/api/inside/reactions/${blogId}`)
             setCount({
-                likes: res.data.likes,
-                hearts: res.data.hearts,
-                laughs: res.data.laughs,
-                dislikes: res.data.dislikes,
+                likes: Number(res.data.likes),
+                hearts: Number(res.data.hearts),
+                laughs: Number(res.data.laughs),
+                dislikes: Number(res.data.dislikes),
             })
 
         }
         getReactions();
-    }, [react])
+    }, [react])*/
 
     return (
         <div className={styles.blog}>
             <small>{timeAgo(blog.posted_at)}</small>
             <h2>{(blog.title).toUpperCase()}</h2>
-            <img src={blog.image} />
+            <img src={`https://blog-backend-wh4q.onrender.com/${blog.image}`} />
             <div id="rate-btn" className={styles.rate}>
                 <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{Number(formatCount(count.likes))}</span></button>
                 <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{Number(formatCount(count.hearts))}</span></button>
