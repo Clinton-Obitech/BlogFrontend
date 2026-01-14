@@ -73,11 +73,20 @@ function BlogCard({blog}) {
 
 export default function Inside() {
     const [blogs, setBlogs] = useState([]);
+    const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);;
 
     const getBlogs = async (selectedDate) => {
-        const res = await api.get(`/api/inside?date=${selectedDate}`)
-        setBlogs(res.data.blogs)
+        try {
+            setLoading(true)
+            const res = await api.get(`/api/inside?date=${selectedDate}`)
+            setBlogs(res.data.blogs)
+        } catch (err) {
+            console.error(err)
+        } finally {
+            setLoading(false)
+        }
+        
     }
 
     useEffect(() => {
@@ -111,6 +120,7 @@ export default function Inside() {
         />
         <button onClick={goToNextDay} type="button">Next day</button>
         </div>
+        {loading && <p className={styles.noBlogsForDate}>Loading...</p>}
         {blogs.length === 0 ? (
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
