@@ -249,7 +249,7 @@ export default function AdminInside() {
 
     return (
         <main className={styles.adminNews}>
-            <h3 style={{backgroundColor: "rgba(0,0,0,0.8)", padding: "0.5rem 0"}}>MANAGE INSIDE NAIJA</h3>
+            <h3 style={{backgroundColor: "rgba(0,0,0,0.8)", padding: "0.5rem 0", width: "90%", margin: "auto"}}>CREATE NEWS</h3>
             <form ref={formRef} onSubmit={editMode ? HandleUpdate : HandleSubmit}>
                 <label>Title
                 <input name="title" 
@@ -287,7 +287,7 @@ export default function AdminInside() {
                 )}
             </form>
 
-            <h3 style={{marginTop: "1rem", backgroundColor: "rgba(0,0,0,0.8)", padding: "0.5rem 0"}}>MODIFY / VIEW BLOGS</h3>
+            <h3 style={{margin: "1rem auto 0", backgroundColor: "rgba(0,0,0,0.8)", padding: "0.5rem 0", width: "90%"}}>MODIFY / VIEW NEWS</h3>
             <div className={styles.blogsNavigation}>
                     <button onClick={goToPreviousDay} type="button">Previous day</button>
                     <input
