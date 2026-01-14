@@ -52,7 +52,7 @@ export default function LoginPage() {
             type='text'
             name="username"
             value={loginData.username}
-            placeholder='Username...'
+            placeholder='Input Your Username...'
             onChange={HandleData}
             />
             </fieldset>
@@ -63,7 +63,7 @@ export default function LoginPage() {
             type='Password'
             name="password"
             value={loginData.password}
-            placeholder='Password...'
+            placeholder='Input Your Password...'
             onChange={HandleData}
             />
             </fieldset>
