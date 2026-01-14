@@ -8,7 +8,7 @@
     border-radius: 5px;
     border: 1.5px solid black;
     background-color: white;
-    padding: 0 0.5rem 0.5rem;
+    padding: 0.2rem 0.5rem 0.2rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -26,7 +26,6 @@
     outline: none;
     font-size: 1.2rem;
     width: 80%;
-    margin-bottom: 0.5rem;
 }
 
 .error, .message, .noBlogsForDate {
