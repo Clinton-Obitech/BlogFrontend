@@ -8,13 +8,14 @@ import SideNav from './SideNav.jsx';
 import api from "../api/axios.js";
 
 function Header() {
-  const cachedUser = JSON.parse(localStorage.getItem("user"));
-  const [user, setUser] = useState(cachedUser);
+  const [user, setUser] = useState(() => {
+  return JSON.parse(localStorage.getItem("user"));
+});
 
   const navigate = useNavigate();
 
   useEffect(() => {
-  if (cachedUser) return;
+  if (user) return;
 
   const getUser = async () => {
     try {
@@ -27,7 +28,7 @@ function Header() {
   };
 
   getUser();
-}, [cachedUser]);
+}, [user]);
 
 
   /*useEffect(() => {
