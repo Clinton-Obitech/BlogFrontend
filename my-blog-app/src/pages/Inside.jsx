@@ -1,7 +1,6 @@
 import Mini_hero from "../components/Mini_hero"
 import { useEffect, useState } from "react"
 import api from "../api/axios.js";
-import axios from "axios";
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
@@ -31,17 +30,17 @@ function BlogCard({blog}) {
     const react = async (type) => {
         const blogId = blog.id;
         try {
-            await axios.post(`/api/inside/reactions/${blogId}`, {reaction: type}, {withCredentials: true});
+            await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
             toast.error("Please sign in to react");
         }
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         const blogId = blog.id;
         const getReactions = async () => {
 
-            const res = await axios.get(`/api/inside/reactions/${blogId}`)
+            const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
                 likes: Number(res.data.likes),
                 hearts: Number(res.data.hearts),
@@ -51,7 +50,7 @@ function BlogCard({blog}) {
 
         }
         getReactions();
-    }, [react])*/
+    }, [react])
 
     return (
         <div className={styles.blog}>
