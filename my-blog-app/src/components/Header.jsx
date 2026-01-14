@@ -29,7 +29,7 @@ function Header() {
         console.error(err);
       }
     }
-  getUser();
+  setTimeout(getUser, 1000);
 
   return () => {
     ignore = true;
