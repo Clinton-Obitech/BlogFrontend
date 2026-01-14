@@ -73,7 +73,7 @@ function BlogCard({blog}) {
 export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);;
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
 
     const getBlogs = async (selectedDate) => {
         try {

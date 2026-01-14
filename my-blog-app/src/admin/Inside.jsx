@@ -81,6 +81,7 @@ export default function AdminInside() {
     const [views, setView] = useState([]);
     const [BlogId, setBlogId] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);;
 
     const editMode = Boolean(BlogId);
 
@@ -204,15 +205,30 @@ export default function AdminInside() {
         fetchBlog();
     }, [BlogId]);
 
-    useEffect(() => {
-        const fetchBlogs = async () => {
-            const res = await api.get("/api/admin/inside");
-            if(res.data.blogs) {
+        const fetchBlogs = async (selectedDate) => {
+            const res = await api.get(`/api/admin/inside?date=${selectedDate}`);
             setView(res.data.blogs);
-            }
         };
-        fetchBlogs();
-    }, []);
+
+    useEffect(() => {
+        fetchBlogs(date)
+    }, [date])
+
+    const handleDateChange = (e) => {
+        setDate(e.target.value)
+    }
+
+    const goToNextDay = () => {
+        const next = new Date(date);
+        next.setDate(next.getDate() + 1);
+        setDate(next.toISOString().split("T")[0]);
+    }
+
+    const goToPreviousDay = () => {
+        const prev = new Date(date);
+        prev.setDate(prev.getDate() - 1);
+        setDate(prev.toISOString().split("T")[0]);
+    }
 
     return (
         <main className={styles.adminNews}>
@@ -256,6 +272,15 @@ export default function AdminInside() {
             </form>
 
             <h3>MODIFY / VIEW BLOGS</h3>
+            <div className={styles.blogsNavigation}>
+                    <button onClick={goToPreviousDay} type="button">Previous day</button>
+                    <input
+                        type="date"
+                        value={date}
+                        onChange={handleDateChange}
+                    />
+                    <button onClick={goToNextDay} type="button">Next day</button>
+            </div>
             <div className={styles.viewContainer}>
             {views.map(view => (
                 <ViewCard
