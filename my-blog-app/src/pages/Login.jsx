@@ -28,6 +28,7 @@ export default function LoginPage() {
                 toast.success(response.data.message)
                 setTimeout(() => {
                     navigate("/", {replace: true})
+                    setLoading(false)
                 }, 3000)
 
                 setLoginData({
@@ -37,16 +38,13 @@ export default function LoginPage() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
-        } finally {
-            setLoading(false)
         }
-    }
+    }  
 
     return (
         <>
         <form className={styles.form} onSubmit={handleSubmit}>
             <legend>Login</legend>
-            {loading && <p style={{textAlign: "center", padding: "0.5rem 0"}}>Logging in...</p>}
             <input
             type='text'
             name="username"
@@ -62,7 +60,7 @@ export default function LoginPage() {
             placeholder='Password...'
             onChange={HandleData}
             />
-            <button disabled={loading} type='submit'>Login</button>
+            <button disabled={loading} type='submit'>{loading ? "Logging in..." : "Login"}</button>
         </form>
         <button style={{display: "block", margin: "auto", color: "teal", fontSize: "1rem", border: "none", backgroundColor: "transparent"}} type="button">
             <NavLink style={{color: "teal"}} to="/Register">create account</NavLink>
