@@ -120,8 +120,6 @@ export default function AdminInside() {
     const HandleSubmit = async (e) => {
         e.preventDefault();
 
-        setLoading(true);
-
         try {
             const formData = new FormData();
             Object.entries(blogData).forEach(([key, value]) =>
@@ -139,8 +137,6 @@ export default function AdminInside() {
 
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
-        } finally {
-            setLoading(false)
         }
     };
 
@@ -247,7 +243,6 @@ export default function AdminInside() {
     return (
         <main className={styles.adminNews}>
             <h3>MANAGE INSIDE NAIJA</h3>
-            {loading && <h2 className="loading">Loading</h2>}
             <form ref={formRef} onSubmit={editMode ? HandleUpdate : HandleSubmit}>
                 <label>Title
                 <input name="title" 
