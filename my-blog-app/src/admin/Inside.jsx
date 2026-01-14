@@ -13,13 +13,6 @@ function ViewCard({ view, onEdit, onDelete }) {
         laughs: 0,
         dislikes: 0,
     });
-
-    const formatCount = (num) => {
-        return new Intl.NumberFormat("en", {
-        notation: "compact",
-        maximumFractionDigits: 1,
-        }).format(num);
-        };
     
     
         const timeAgo = (date) => {
