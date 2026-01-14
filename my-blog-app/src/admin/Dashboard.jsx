@@ -6,13 +6,11 @@ import { toast } from "react-toastify";
 
 export default function Dashboard() {
     const [admin, setAdmin] = useState({});
-    const [username, setUsername] = useState({});
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setUsername(JSON.parse(localStorage.getItem("admin")));
         const getAdmin = async () => {
             try {
             const res = await api.get("/api/admin/dashboard");
@@ -24,19 +22,17 @@ export default function Dashboard() {
             }
         }
         getAdmin();
-    }, [username])
+    }, [])
 
     const logOut = async () => {
         setLoading(true)
         try {
         await api.post("/api/logout", {})
         setAdmin(null)
+        setLoading(false)
         navigate("/admin/login", {replace: true})
-        localStorage.removeItem("admin")
         } catch (err) {
             console.error(err)
-        } finally {
-            setLoading(false)
         }
     }
 

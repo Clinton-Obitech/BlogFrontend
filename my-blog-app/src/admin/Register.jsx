@@ -27,7 +27,6 @@ export default function RegisterAdmin() {
 
             if (response.data.success) {
             toast.success(response.data.message)
-            localStorage.setItem("admin", JSON.stringify(response.data.admin))
             setTimeout(() => {
                 setLoading(false)
                 navigate('/admin/Dashboard', {replace: true})
