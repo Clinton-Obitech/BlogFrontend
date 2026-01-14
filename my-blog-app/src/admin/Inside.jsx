@@ -213,8 +213,15 @@ export default function AdminInside() {
     }, [BlogId]);
 
         const fetchBlogs = async (selectedDate) => {
+            setLoading(true)
+            try {
             const res = await api.get(`/api/admin/inside?date=${selectedDate}`);
             setView(res.data.blogs);
+            } catch (err) {
+                console.error(err)
+            } finally {
+                setLoading(false)
+            }
         };
 
     useEffect(() => {
