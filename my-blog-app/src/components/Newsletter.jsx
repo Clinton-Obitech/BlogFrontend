@@ -7,6 +7,7 @@ export default function Newsletter() {
     const [email, setEmail] = useState({
         email: ""
     });
+    const [loading, setLoading] = useState(false);
 
     const HandleEmail = (e) => {
         setEmail({...email, [e.target.name]: e.target.value})
@@ -16,14 +17,17 @@ export default function Newsletter() {
 
         e.preventDefault();
         try {
+            setLoading(true)
             const response = await api.post("/api/newsletter", email);
             toast.success(response.data.message)
         } catch (err) {
             toast.error(err.response?.data?.message)
-        }
-        setEmail({
+        } finally {
+            setLoading(false)
+            setEmail({
             email: ""
-        })
+            })
+    }
     }
     return (
         <section className="newsletter">
@@ -37,7 +41,7 @@ export default function Newsletter() {
          onChange={HandleEmail}
          />
 
-         <input type="submit" value="subscribe" />
+         <input type="submit" disabled={loading} value={loading ? "Subscribing.." : "Subscribe"} />
 
          </form>
         </section>
