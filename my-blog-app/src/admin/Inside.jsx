@@ -279,7 +279,7 @@ export default function AdminInside() {
                 onChange={HandleInputs} 
                 />
                 </label>
-                <button type="submit" disabled={loading}>{editMode ? "Update Post" : "Post News"}</button>
+                <button type="submit" disabled={postLoading}>{editMode ? "Update Post" : "Post News"}</button>
 
                 {editMode && (
                     <button type="button" onClick={resetForm}>
