@@ -27,7 +27,6 @@ function Header() {
       }
       } catch (err) {
         console.error(err);
-        if (!ignore) setUser({username: "User"})
       }
     }
   getUser();
