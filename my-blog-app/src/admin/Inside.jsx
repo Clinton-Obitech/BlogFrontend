@@ -36,7 +36,7 @@ function ViewCard({ view, onEdit, onDelete }) {
 
     return (
             <div className={styles.view}>
-                <h5>{timeAgo(blog.posted_at)}</h5>
+                <h5>{timeAgo(view.posted_at)}</h5>
                 <h3>{view.title}</h3>
 
                 <img
