@@ -125,13 +125,12 @@ export default function AdminInside() {
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true)
         try {
             const formData = new FormData();
             Object.entries(blogData).forEach(([key, value]) =>
                 formData.append(key, value)
             );
-
+            setLoading(true)
             const res = await api.post(
                 "/api/admin/inside",
                 formData
