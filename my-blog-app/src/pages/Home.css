@@ -6,6 +6,11 @@ main section {
     overflow: auto;
     margin-bottom: 1rem;
     margin-left: 1rem;
+    scrollbar-width: none;
+}
+
+main section::-webkit-scrollbar {
+    display: none;
 }
 
 main .highlights {
