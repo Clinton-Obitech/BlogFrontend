@@ -13,6 +13,19 @@ function ViewCard({ view, onEdit, onDelete }) {
         dislikes: 0,
     });
 
+    const formatCount = (num) => {
+        return new Intl.NumberFormat("en", {
+        notation: "compact",
+        maximumFractionDigits: 1,
+        }).format(num);
+        };
+    
+    
+        const timeAgo = (date) => {
+        return formatDistanceToNow(new Date(date), { addSuffix: true });
+    
+        };
+
     useEffect(() => {
         const blogId = view.id;
         const getReactions = async () => {
@@ -29,7 +42,7 @@ function ViewCard({ view, onEdit, onDelete }) {
 
     return (
             <div className={styles.view}>
-                <h5>{new Date(view.posted_at).toDateString()}</h5>
+                <h5>{timeAgo(blog.posted_at)}</h5>
                 <h3>{view.title}</h3>
 
                 <img
@@ -282,14 +295,15 @@ export default function AdminInside() {
                     <button onClick={goToNextDay} type="button">Next day</button>
             </div>
             <div className={styles.viewContainer}>
-            {views.map(view => (
-                <ViewCard
-                    key={view.id}
-                    view={view}
-                    onEdit={setBlogId}
-                    onDelete={deleteBlog}
-                />
-            ))}
+            {loading ? (<p className={styles.noBlogsForDate}>Loading...</p> 
+                    ) : (views.length === 0 ? (
+                        <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
+                    ) : (
+                        views.map(view => (
+                        <ViewCard key={view.id} view={view} onEdit={setBlogId} onDelete={deleteBlog}/>
+                    ))
+                    )
+                    )}
             </div>
         </main>
     );
