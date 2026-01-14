@@ -19,33 +19,8 @@ function Header() {
       console.error(err);
     }
   };
-
   getUser();
-}, []);
-
-
-  /*useEffect(() => {
-    if (cachedUser) return;
-
-    let ignore = false;
-
-    const getUser = async () => {
-      try {
-        const res = await api.get("/api/home");
-        if (!ignore) {
-        setUser(res.data.user)
-        localStorage.setItem("user", JSON.stringify(res.data.user))
-      }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  setTimeout(getUser, 1000);
-
-  return () => {
-    ignore = true;
-  }
-}, []);*/
+  }, []);
 
   const navHome = () => {
     navigate("/", {replace: true})
@@ -71,7 +46,7 @@ function Header() {
           {user ? 
           <div style={userStyle}>
             <div style={{height: "25px", width: "25px", borderRadius: "100%", backgroundColor: "green"}}></div>
-            <h3 style={{marginLeft: "0.2rem"}}>{user?.username}</h3>
+            <h3 style={{marginLeft: "0.2rem"}}>{user.username}</h3>
           </div>
            : 
           <NavLink style={{fontSize: "1.2rem", textDecoration: "none", color: "black"}} to='/Login'><i style={{color: "teal"}} className="fa-solid fa-user"></i> Sign in</NavLink>}
