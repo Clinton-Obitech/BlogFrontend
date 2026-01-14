@@ -65,7 +65,6 @@ function BlogCard({blog}) {
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
-            <button className={styles.continue} type="button">continue reading</button>
         </div>
     )
 }
