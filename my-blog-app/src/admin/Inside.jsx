@@ -286,7 +286,7 @@ export default function AdminInside() {
                 )}
             </form>
 
-            <h3>MODIFY / VIEW BLOGS</h3>
+            <h3 style={{marginTop: "1rem"}}>MODIFY / VIEW BLOGS</h3>
             <div className={styles.blogsNavigation}>
                     <button onClick={goToPreviousDay} type="button">Previous day</button>
                     <input
