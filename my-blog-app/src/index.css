@@ -14,3 +14,8 @@
   text-align: center;
   border: 1.5px solid black;
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
