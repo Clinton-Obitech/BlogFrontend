@@ -61,7 +61,7 @@ export default function LoginPage() {
             <legend>Password</legend>
             <input
             type='Password'
-            name="password"
+            name='password'
             value={loginData.password}
             placeholder='Input Your Password...'
             onChange={HandleData}
