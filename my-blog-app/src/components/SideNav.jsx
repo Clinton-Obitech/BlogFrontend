@@ -22,6 +22,7 @@ export default function SideNav({user, setUser}) {
 
     const logOut = async () => {
       try {
+      setLoading(true)
       await api.post("/api/logout", {});
       setMenuOpen(false)
       setUser(null)
