@@ -1,4 +1,3 @@
-import Footer from "../components/Footer"
 import { Outlet } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 
@@ -7,7 +6,6 @@ export default function AuthLayout() {
         <>
         <AuthHeader />
         <Outlet />
-        <Footer />
         </>
     )
 }

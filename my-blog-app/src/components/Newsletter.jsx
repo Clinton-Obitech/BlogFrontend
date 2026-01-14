@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import './Newsletter.css'
-import axios from 'axios';
+import { useState } from 'react';
+import './Newsletter.css';
+import api from "../api/axios.js";
 import { toast } from 'react-toastify';
 
 export default function Newsletter() {
@@ -16,7 +16,7 @@ export default function Newsletter() {
 
         e.preventDefault();
         try {
-            const response = await axios.post("/api/newsletter", email);
+            const response = await api.post("/api/newsletter", email);
             toast.success(response.data.message)
         } catch (err) {
             toast.error(err.response?.data?.message)

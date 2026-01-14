@@ -12,6 +12,7 @@ export default function RegisterPage() {
         email: "",
         password: "",
     })
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ export default function RegisterPage() {
         e.preventDefault();
 
         try {
+            setLoading(true)
             const response = await api.post("/api/register", formData)
             toast.success(response.data.message)
 
@@ -30,6 +32,7 @@ export default function RegisterPage() {
             
             setTimeout(() => {
                 navigate('/', {replace: true})
+                setLoading(false)
             }, 3000)
 
             setFormData({
@@ -51,47 +54,57 @@ export default function RegisterPage() {
         <>
         <form onSubmit={SubmitForm} className={styles.form}>
             <legend>Sign Up</legend>
+            <fieldset>
+            <legend>Firstname</legend>
             <input
             type='text'
             name="firstname"
             value={formData.firstname}
-            placeholder="Firstname..."
             onChange={HandleData}
             />
+            </fieldset>
 
+            <fieldset>
+            <label>Lastname</label>
             <input
             type='text'
             name="lastname"
             value={formData.lastname}
-            placeholder="Lastname..."
             onChange={HandleData}
             />
+            </fieldset>
             
+            <fieldset>
+            <legend>Username</legend>
             <input
             type='text'
             name="username"
             value={formData.username}
-            placeholder="Username..."
             onChange={HandleData}
             />
+            </fieldset>
             
+            <fieldset>
+            <legend>Email address</legend>
             <input
             type='email'
             name="email"
             value={formData.email}
-            placeholder="Email address..."
             onChange={HandleData}
             />
+            </fieldset>
             
+            <fieldset>
+            <legend>Password</legend>
             <input
             type='Password'
             name="password"
             value={formData.password}
-            placeholder="Password..."
             onChange={HandleData}
             />
+            </fieldset>
 
-            <button type="submit">Register</button>
+            <button disabled={loading} type="submit">{loading ? "Creating account" : "Sign Up"}</button>
         </form>
         </>
     )
