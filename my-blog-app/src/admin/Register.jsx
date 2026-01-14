@@ -42,6 +42,8 @@ export default function RegisterAdmin() {
 
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     }
 

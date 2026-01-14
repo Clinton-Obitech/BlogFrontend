@@ -39,6 +39,8 @@ export default function LoginPage() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     }  
 
