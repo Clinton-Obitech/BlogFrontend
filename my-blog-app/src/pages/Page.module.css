@@ -5,10 +5,10 @@
 }
 
 .form fieldset {
-    border-radius: 15px;
+    border-radius: 5px;
     border: 1.5px solid black;
     background-color: white;
-    padding: 0.5rem;
+    padding: 0 0.5rem 0.5rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
