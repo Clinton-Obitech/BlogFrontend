@@ -125,7 +125,7 @@ export default function AdminInside() {
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true)
         try {
             const formData = new FormData();
             Object.entries(blogData).forEach(([key, value]) =>
@@ -143,6 +143,8 @@ export default function AdminInside() {
 
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     };
 
