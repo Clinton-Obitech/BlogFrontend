@@ -5,30 +5,23 @@ import { NavLink } from 'react-router-dom'
 import './Nav.css'
 import styles from "./Header.module.css";
 import SideNav from './SideNav.jsx';
-import api from "../api/axios.js";
 
 function Header() {
-  const [user, setUser] = useState(() => {
-  return JSON.parse(localStorage.getItem("user"));
-});
+  const [user, setUser] = useState({});
 
   const navigate = useNavigate();
 
   useEffect(() => {
-  if (user) return;
-
   const getUser = async () => {
     try {
-      const res = await api.get("/api/home");
-      setUser(res.data.user);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      setUser(JSON.parse(localStorage.getItem("user")));
     } catch (err) {
       console.error(err);
     }
   };
 
   getUser();
-}, [user]);
+}, []);
 
 
   /*useEffect(() => {
