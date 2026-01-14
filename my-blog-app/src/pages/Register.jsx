@@ -65,7 +65,7 @@ export default function RegisterPage() {
             </fieldset>
 
             <fieldset>
-            <label>Lastname</label>
+            <legend>Lastname</legend>
             <input
             type='text'
             name="lastname"
