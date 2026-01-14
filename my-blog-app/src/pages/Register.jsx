@@ -27,9 +27,8 @@ export default function RegisterPage() {
             setLoading(true)
             const response = await api.post("/api/register", formData)
             toast.success(response.data.message)
-
             if (response.data.success) {
-            
+            localStorage.setItem("user", JSON.stringify(response.data.user))
             setTimeout(() => {
                 navigate('/', {replace: true})
                 setLoading(false)
@@ -42,9 +41,7 @@ export default function RegisterPage() {
             email: "",
             password: ""
         })
-
         }
-
         } catch (err) {
         toast.error(err.response?.data?.message || "Something went wrong");
         }

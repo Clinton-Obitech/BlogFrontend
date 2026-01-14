@@ -9,6 +9,7 @@ export default function LoginAdmin() {
         username: "",
         password: "",
     })
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
 
@@ -20,13 +21,13 @@ export default function LoginAdmin() {
         e.preventDefault();
 
         try {
-
+            setLoading(true)
             const response = await api.post("/api/login/admin", formData)
-            toast.success(response.data.message)
-
             if (response.data.success) {
-            
+            toast.success(response.data.message)
+            localStorage.setItem("admin", JSON.stringify(response.data.admin))
             setTimeout(() => {
+                setLoading(false)
                 navigate('/admin/Dashboard', {replace: true})
             }, 3000)
 
@@ -46,24 +47,26 @@ export default function LoginAdmin() {
         <>
         <form onSubmit={SubmitForm} className={styles.form}>
             <legend>Admin Login</legend>
-            
+            <fieldset>
+            <legend>Username</legend>
             <input
             type='text'
             name="username"
             value={formData.username}
-            placeholder="Username..."
             onChange={HandleData}
             />
+            </fieldset>
             
+            <fieldset>
+            <legend>Password</legend>
             <input
             type='Password'
             name="password"
             value={formData.password}
-            placeholder="Password..."
             onChange={HandleData}
             />
-
-            <button type="submit">Login</button>
+            </fieldset>
+            <button disabled={loading} type="submit">{loading ? "Logging in..." : "Login"}</button>
         </form>
         </>
     )

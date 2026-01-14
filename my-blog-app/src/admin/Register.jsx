@@ -10,6 +10,7 @@ export default function RegisterAdmin() {
         email: "",
         password: "",
     })
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
 
@@ -21,13 +22,14 @@ export default function RegisterAdmin() {
         e.preventDefault();
 
         try {
-
+            setLoading(true)
             const response = await api.post("/api/register/admin", formData)
-            toast.success(response.data.message)
 
             if (response.data.success) {
-            
+            toast.success(response.data.message)
+            localStorage.setItem("admin", JSON.stringify(response.data.admin))
             setTimeout(() => {
+                setLoading(false)
                 navigate('/admin/Dashboard', {replace: true})
             }, 3000)
 
@@ -47,33 +49,38 @@ export default function RegisterAdmin() {
     return (
         <>
         <form onSubmit={SubmitForm} className={styles.form}>
-            <legend>Admin Register</legend>
-            
+            <legend>Admin Sign Up</legend>
+            <fieldset>
+            <legend>Username</legend>
             <input
             type='text'
             name="username"
             value={formData.username}
-            placeholder="Username..."
             onChange={HandleData}
             />
+            </fieldset>
             
+            <fieldset>
+            <legend>Email address</legend>
             <input
             type='email'
             name="email"
             value={formData.email}
-            placeholder="Email address..."
             onChange={HandleData}
             />
-            
+            </fieldset>
+
+            <fieldset>
+            <legend>Password</legend>
             <input
             type='Password'
             name="password"
             value={formData.password}
-            placeholder="Password..."
             onChange={HandleData}
             />
+            </fieldset>
 
-            <button type="submit">Register</button>
+            <button disabled={loading} type="submit">{loading ? "Creating account.." : "Register"}</button>
         </form>
         </>
     )
