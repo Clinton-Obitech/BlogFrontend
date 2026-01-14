@@ -8,7 +8,7 @@
     border-radius: 15px;
     border: 1.5px solid black;
     background-color: white;
-    padding: 0.5ren;
+    padding: 0.5rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -17,7 +17,7 @@
 
 .form fieldset > legend {
     color: teal;
-    padding: 0.5rem 0.5rem 0;
+    padding: 0 0.5rem;
     font-size: 1rem;
 }
 
@@ -26,6 +26,7 @@
     outline: none;
     font-size: 1.2rem;
     width: 80%;
+    margin-bottom: 0.5rem;
 }
 
 .error, .message, .noBlogsForDate {
