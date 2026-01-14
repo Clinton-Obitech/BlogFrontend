@@ -12,14 +12,11 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  const getUser = async () => {
     try {
       setUser(JSON.parse(localStorage.getItem("user")));
     } catch (err) {
       console.error(err);
     }
-  };
-  getUser();
   }, []);
 
   const navHome = () => {
