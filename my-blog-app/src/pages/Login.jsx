@@ -10,6 +10,7 @@ export default function LoginPage() {
         username: "",
         password: "",
     })
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true)
             const response = await api.post("/api/login", loginData);
             
             if (response.data.success) { 
@@ -35,6 +37,8 @@ export default function LoginPage() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -57,7 +61,8 @@ export default function LoginPage() {
             placeholder='Password...'
             onChange={HandleData}
             />
-            <button type='submit'>Login</button>
+            <button disabled={loading} type='submit'>Login</button>
+            {loading && <p style={{textAlign: "center", padding: "0.5rem 0"}}>Logging in...</p>}
         </form>
         <button style={{display: "block", margin: "auto", color: "teal", fontSize: "1rem", border: "none", backgroundColor: "transparent"}} type="button">
             <NavLink style={{color: "teal"}} to="/Register">create account</NavLink>
