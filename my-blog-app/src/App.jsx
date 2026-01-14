@@ -27,22 +27,11 @@ import AdminCulture from './admin/Culture'
 import AdminReligion from './admin/Religion'
 import AdminHealth from './admin/Health'
 import AdminSport from './admin/Sports'
-import { attachLoaderInterceptors } from './api/axios.js'
-import GlobalLoader from './components/GlobalLoader.jsx'
-import { useLoader } from './context/LoaderContext.jsx'
 
 export default function App() {
 
-  const { loading, setLoading } = useLoader();
-
-  useEffect(() => {
-    attachLoaderInterceptors(setLoading);
-  }, []);
-
-
   return (
     <>
-     {loading && <GlobalLoader />}
     <Routes>
       <Route element={<MainLayout />}>
       <Route path="/" element={<Home />} />
