@@ -93,7 +93,8 @@ export default function AdminInside() {
 
     const [views, setView] = useState([]);
     const [BlogId, setBlogId] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [viewloading, setViewLoading] = useState(false);
+    const [postloading, setPostLoading] = useState(false);
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);;
 
     const editMode = Boolean(BlogId);
@@ -130,7 +131,7 @@ export default function AdminInside() {
             Object.entries(blogData).forEach(([key, value]) =>
                 formData.append(key, value)
             );
-            setLoading(true)
+            setPostLoading(true)
             const res = await api.post(
                 "/api/admin/inside",
                 formData
@@ -143,7 +144,7 @@ export default function AdminInside() {
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
         } finally {
-            setLoading(false)
+            setPostLoading(false)
         }
     };
 
@@ -216,14 +217,14 @@ export default function AdminInside() {
     }, [BlogId]);
 
         const fetchBlogs = async (selectedDate) => {
-            setLoading(true)
+            setViewLoading(true)
             try {
             const res = await api.get(`/api/admin/inside?date=${selectedDate}`);
             setView(res.data.blogs);
             } catch (err) {
                 console.error(err)
             } finally {
-                setLoading(false)
+                setViewLoading(false)
             }
         };
 
@@ -298,7 +299,7 @@ export default function AdminInside() {
                     <button onClick={goToNextDay} type="button">Next day</button>
             </div>
             <div className={styles.viewContainer}>
-            {loading ? (<p className={styles.noBlogsForDate}>Loading...</p> 
+            {viewloading ? (<p className={styles.noBlogsForDate}>Loading...</p> 
                     ) : (views.length === 0 ? (
                         <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
                     ) : (
