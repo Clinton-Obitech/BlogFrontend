@@ -39,8 +39,6 @@ export default function LoginPage() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
-        } finally {
-            setLoading(false)
         }
     }  
 
@@ -48,6 +46,8 @@ export default function LoginPage() {
         <>
         <form className={styles.form} onSubmit={handleSubmit}>
             <legend>Login</legend>
+            <fieldset>
+            <legend>Username</legend>
             <input
             type='text'
             name="username"
@@ -55,7 +55,10 @@ export default function LoginPage() {
             placeholder='Username...'
             onChange={HandleData}
             />
-
+            </fieldset>
+            
+            <fieldset>
+            <legend>Password</legend>
             <input
             type='Password'
             name="password"
@@ -63,6 +66,7 @@ export default function LoginPage() {
             placeholder='Password...'
             onChange={HandleData}
             />
+            </fieldset>
             <button disabled={loading} type='submit'>{loading ? "Logging in..." : "Login"}</button>
         </form>
         <button style={{display: "block", margin: "auto", color: "teal", fontSize: "1rem", border: "none", backgroundColor: "transparent"}} type="button">
