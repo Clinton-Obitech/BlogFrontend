@@ -14,13 +14,14 @@
 .newsletter h3 {
     font-weight: lighter;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .newsletter form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem 0 0.4rem;
 }
 
@@ -35,4 +36,5 @@
     padding: 0.5rem;
     border: 1.3px solid black;
     border-radius: 5px;
+    width: 100%;
 }

@@ -29,7 +29,6 @@ export default function Newsletter() {
         <section className="newsletter">
          <h3>subscribe to our newsletter</h3>
          <form onSubmit={SubmitEmail}>
-
          <input 
          type="email" 
          name="email" 
