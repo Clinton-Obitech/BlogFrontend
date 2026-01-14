@@ -1,7 +1,10 @@
 .adminNews h3 {
     text-align: center;
-    margin: 1rem 0;
+    margin: 0.5rem auto 1rem;
     color: teal;
+    border-radius: 5px;
+    width: 95%;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .adminNews form {
