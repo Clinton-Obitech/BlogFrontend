@@ -6,6 +6,7 @@ import UserInfo from "../pages/UserInfo.jsx";
 export default function SideNav({user, setUser}) {
     const [menuOpen, setMenuOpen] = useState(false);
     const [active, setActive] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
     if(menuOpen) {
@@ -20,10 +21,16 @@ export default function SideNav({user, setUser}) {
   }, [menuOpen])
 
     const logOut = async () => {
+      try {
       await api.post("/api/logout", {});
       setMenuOpen(false)
       setUser(null)
       localStorage.removeItem("user")
+      } catch (err) {
+      console.error(err)
+      } finally {
+        setLoading(false)
+      }
     }
   const navItems = [
     {key: "user", label: "User Information", component: <UserInfo />},
@@ -39,7 +46,7 @@ export default function SideNav({user, setUser}) {
         {menuOpen && (
           <div className={styles.dropDiv}>
           {user ?  
-            <button className={styles.logoutBtn} onClick={logOut}>Logout</button> : null
+            <button className={styles.logoutBtn} onClick={logOut}>{loading ? "Logging Out.." : "Logout"}</button> : null
           }
           
           

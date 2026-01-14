@@ -46,6 +46,7 @@ export default function LoginPage() {
         <>
         <form className={styles.form} onSubmit={handleSubmit}>
             <legend>Login</legend>
+            {loading && <p style={{textAlign: "center", padding: "0.5rem 0"}}>Logging in...</p>}
             <input
             type='text'
             name="username"
@@ -62,7 +63,6 @@ export default function LoginPage() {
             onChange={HandleData}
             />
             <button disabled={loading} type='submit'>Login</button>
-            {loading && <p style={{textAlign: "center", padding: "0.5rem 0"}}>Logging in...</p>}
         </form>
         <button style={{display: "block", margin: "auto", color: "teal", fontSize: "1rem", border: "none", backgroundColor: "transparent"}} type="button">
             <NavLink style={{color: "teal"}} to="/Register">create account</NavLink>

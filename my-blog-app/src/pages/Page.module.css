@@ -138,6 +138,8 @@
     font-size: 1.2rem;
     text-align: center;
     background-color: white;
+    justify-self: center;
+    justify-items: center;
 }
 
 .userInfo > ul {
