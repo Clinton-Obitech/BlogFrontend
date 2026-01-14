@@ -14,6 +14,23 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
+  if (cachedUser) return;
+
+  const getUser = async () => {
+    try {
+      const res = await api.get("/api/home");
+      setUser(res.data.user);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  getUser();
+}, [cachedUser]);
+
+
+  /*useEffect(() => {
     if (cachedUser) return;
 
     let ignore = false;
@@ -34,7 +51,7 @@ function Header() {
   return () => {
     ignore = true;
   }
-}, []);
+}, []);*/
 
   const navHome = () => {
     navigate("/", {replace: true})
