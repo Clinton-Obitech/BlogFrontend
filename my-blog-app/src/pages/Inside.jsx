@@ -120,14 +120,17 @@ export default function Inside() {
         />
         <button onClick={goToNextDay} type="button">Next day</button>
         </div>
-        {loading && <p className={styles.noBlogsForDate}>Loading...</p>}
-        {blogs.length === 0 ? (
+        {loading ? (<p className={styles.noBlogsForDate}>Loading...</p> 
+        ) : (blogs.length === 0 ? (
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
             <BlogCard key={blog.id} blog={blog}/>
         ))
+        )
+
         )}
+        
         </>
     )
 }
