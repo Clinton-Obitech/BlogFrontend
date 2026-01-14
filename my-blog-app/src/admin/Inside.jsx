@@ -41,7 +41,6 @@ function ViewCard({ view, onEdit, onDelete }) {
 
                 <img
                     src={view.image}
-                    alt={view.title}
                 />
 
                 <div className={styles.ratebtn}>
@@ -51,7 +50,7 @@ function ViewCard({ view, onEdit, onDelete }) {
                     <button><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{count.dislikes}</span></button>
                 </div>
 
-                <h4><span>By </span>{view.author}</h4>
+                <h4>Posted By <span>{(view.author).toLowerCase()}</span></h4>
                 <p>{view.content}</p>
 
                 <div className={styles.modBtn}>
