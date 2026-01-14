@@ -25,7 +25,7 @@ export default function LoginPage() {
             const response = await api.post("/api/login", loginData);
             
             if (response.data.success) { 
-                localStorage.setItem("user", JSON.stringify(response.data.user))
+                localStorage.setItem("user", JSON.stringify(response.data))
                 toast.success(response.data.message)
                 setTimeout(() => {
                     navigate("/", {replace: true})
@@ -39,6 +39,8 @@ export default function LoginPage() {
             }
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+        } finally {
+            setLoading(false)
         }
     }  
 
