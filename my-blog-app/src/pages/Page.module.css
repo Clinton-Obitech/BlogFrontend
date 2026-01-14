@@ -8,13 +8,16 @@
     border-radius: 15px;
     border: 1.5px solid black;
     background-color: white;
-    padding: 0;
+    padding: 0.5ren;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form fieldset > legend {
     color: teal;
-    padding: 0 0.5rem 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem 0;
     font-size: 1rem;
 }
 
@@ -22,9 +25,7 @@
     border: none;
     outline: none;
     font-size: 1.2rem;
-    width: 100%;
-    padding-left: 1rem;
-    margin-top: -0.5rem;
+    width: 80%;
 }
 
 .error, .message, .noBlogsForDate {
