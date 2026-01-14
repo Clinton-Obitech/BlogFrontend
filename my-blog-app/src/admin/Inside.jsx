@@ -131,7 +131,7 @@ export default function AdminInside() {
             Object.entries(blogData).forEach(([key, value]) =>
                 formData.append(key, value)
             );
-            postLoading(true)
+            setPostLoading(true)
             const res = await api.post(
                 "/api/admin/inside",
                 formData
