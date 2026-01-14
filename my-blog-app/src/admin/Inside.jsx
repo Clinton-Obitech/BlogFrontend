@@ -13,6 +13,13 @@ function ViewCard({ view, onEdit, onDelete }) {
         laughs: 0,
         dislikes: 0,
     });
+
+    const formatCount = (num) => {
+    return new Intl.NumberFormat("en", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+    }).format(num);
+    };
     
     
         const timeAgo = (date) => {
@@ -23,12 +30,12 @@ function ViewCard({ view, onEdit, onDelete }) {
     useEffect(() => {
         const blogId = view.id;
         const getReactions = async () => {
-            const res = await axios.get(`/api/inside/reactions/${blogId}`)
+            const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
-                likes: res.data.likes,
-                hearts: res.data.hearts,
-                laughs: res.data.laughs,
-                dislikes: res.data.dislikes,
+                likes: Number(res.data.likes),
+                hearts: Number(res.data.hearts),
+                laughs: Number(res.data.laughs),
+                dislikes: Number(res.data.dislikes),
             })
         }
         getReactions();
@@ -44,10 +51,10 @@ function ViewCard({ view, onEdit, onDelete }) {
                 />
 
                 <div className={styles.ratebtn}>
-                    <button><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{count.likes}</span></button>
-                    <button><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{count.hearts}</span></button>
-                    <button><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{count.laughs}</span></button>
-                    <button><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{count.dislikes}</span></button>
+                    <button><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(count.likes)}</span></button>
+                    <button><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(count.hearts)}</span></button>
+                    <button><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(count.laughs)}</span></button>
+                    <button><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(count.dislikes)}</span></button>
                 </div>
 
                 <h4>Posted By <span>{(view.author).toLowerCase()}</span></h4>
