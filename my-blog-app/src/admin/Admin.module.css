@@ -72,17 +72,16 @@
 }
 
 .view > h3 {
-    padding: 0.3rem 0.5rem 0.1rem;
+    padding: 0 0.5rem 0.1rem;
     margin: 0;
     text-align: left;
     color: black;
     text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
 .view > p {
     padding: 0 0.5rem 0.5rem;
-    text-align: justify;
+    text-align: left;
     height: 100px;
     overflow: auto;
 }
@@ -96,7 +95,7 @@
 }
 
 .ratebtn {
-    padding: 0.5rem 1rem 0;
+    padding: 0.5rem 0.5rem 0;
     margin-left: 1rem;
 }
 
