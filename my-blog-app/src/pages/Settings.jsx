@@ -5,7 +5,7 @@ import styles from "./Page.module.css"
 export default function Settings() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const [saving, setSaving] = useState(false)
+    const [saving, setSaving] = useState(false);
 
         useEffect(() => {
             const fetchInfo = async () => {
@@ -20,11 +20,11 @@ export default function Settings() {
         fetchInfo();
         }, [])
 
-        const handleInputs = (e) => {
+        /*const handleInputs = (e) => {
             setUser(prev => ({
                 ...prev, [e.target.name]: e.target.value
         }))
-        }
+        }*/
 
         const handleSubmit = async (e) => {
             e.preventDefault();
