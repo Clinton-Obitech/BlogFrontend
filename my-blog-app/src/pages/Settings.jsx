@@ -1,6 +1,7 @@
 import api from "../api/axios.js";
 import { useEffect, useState } from "react"
 import styles from "./Page.module.css"
+import { toast } from "react-toastify";
 
 export default function Settings() {
     const [user, setUser] = useState({});
@@ -20,11 +21,11 @@ export default function Settings() {
         fetchInfo();
         }, [])
 
-        /*const handleInputs = (e) => {
+        const handleInputs = (e) => {
             setUser(prev => ({
                 ...prev, [e.target.name]: e.target.value
         }))
-        }*/
+    }
 
         const handleSubmit = async (e) => {
             e.preventDefault();
