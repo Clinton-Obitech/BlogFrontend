@@ -8,9 +8,9 @@ export default function Settings() {
 
         const fetchInfo = async () => {
             try {
+                setLoading(false)
                 const res = await api.get("/api/user")
                 setUser(res.data.user)
-                setLoading(false)
             } catch (err) {
                 console.error(err)
             } 
