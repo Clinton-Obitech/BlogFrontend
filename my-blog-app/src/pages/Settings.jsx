@@ -13,9 +13,7 @@ export default function Settings() {
                 setLoading(false)
             } catch (err) {
                 console.error(err)
-            } finally {
-                setLoading(true)
-            }
+            } 
         }
     
 
