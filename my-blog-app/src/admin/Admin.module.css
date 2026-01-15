@@ -65,10 +65,12 @@
     min-width: 90%;
     height: 100%;
     margin-right: 1rem;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .view > img {
-    height: 35%;
+    height: 45%;
     width: 100%;
     object-fit: cover;
 }
@@ -78,7 +80,7 @@
     margin: 0;
     text-align: left;
     color: black;
-    height: 20%;
+    height: 10%;
     overflow: auto;
     text-transform: uppercase;
 }
