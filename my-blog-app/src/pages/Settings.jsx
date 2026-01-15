@@ -6,24 +6,26 @@ export default function Settings() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
 
-        const fetchInfo = async () => {
+        useEffect(() => {
+            const fetchInfo = async () => {
             try {
-                setLoading(false)
                 const res = await api.get("/api/user")
+                setLoading(false)
                 setUser(res.data.user)
             } catch (err) {
                 console.error(err)
             } 
         }
+        fetchInfo();
+        }, [])
     
 
     
     if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading Settings...</h3>)
     return (
         <div className={styles.userInfo}>
-            <h2>User Settings</h2>
+            <h2>Settings</h2>
             <div>
-                <button type="button" onClick={fetchInfo}>Personal Information</button>
                 <div>
                     <form>
                         <fieldset>
