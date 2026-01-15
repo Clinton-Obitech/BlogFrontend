@@ -256,12 +256,13 @@
 
 .loginContent button {
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     margin: auto;
     background-color: transparent;
     color: black;
     border: 1.5px solid black;
     border-radius: 5px;
+    font-size: 1.7rem;
 }
 
 .loginContent button > i {
