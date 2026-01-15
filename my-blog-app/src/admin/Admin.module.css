@@ -118,6 +118,8 @@
     overflow: auto;
     width: 95%;
     margin: 0 auto 2rem;
+    background-color: red;
+    height: 150px;
 }
 
 .editBtn {
