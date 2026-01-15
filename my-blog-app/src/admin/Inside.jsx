@@ -204,7 +204,7 @@ export default function AdminInside() {
         if (!BlogId) return;
 
         const fetchBlog = async () => {
-            const res = await axios.get(`/api/admin/edit/${BlogId}`);
+            const res = await api.get(`/api/admin/edit/${BlogId}`);
             setBlogData({
                 title: res.data.blog.title,
                 author: res.data.blog.author,
