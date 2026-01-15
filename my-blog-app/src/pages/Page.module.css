@@ -228,6 +228,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1.5px solid grey;
 }
 
 .loginContent > div {
@@ -235,10 +238,28 @@
     flex-direction: row;
     align-content: center;
     justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.loginContent span {
+    margin-right: 1rem;
+}
+
+.loginContent a {
+    text-transform: capitalize;
+    color: teal;
+    text-decoration: none;
 }
 
 .loginContent button {
-    width: 80%;
+    width: 100%;
     padding: 1rem;
     margin: auto;
+    background-color: transparent;
+    color: black;
+}
+
+.form a {
+   margin-bottom: 0.5rem;
+   color: teal;
 }
