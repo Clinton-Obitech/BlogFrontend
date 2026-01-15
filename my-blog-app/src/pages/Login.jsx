@@ -52,7 +52,7 @@ export default function LoginPage() {
             <div>
               <span>Don't have an account?</span><NavLink to="/Register">Create account</NavLink>  
             </div>
-            <button type="button"><i class="fa-brands fa-google"></i></button>
+            <button type="button"><i className="fa-brands fa-google"></i></button>
             <span>OR</span>
             </div>
             <fieldset>
