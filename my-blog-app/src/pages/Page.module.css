@@ -64,7 +64,6 @@
 
 .blog > h2 {
     padding: 0.3rem 0.4rem 0.4rem;
-    font-size: 1rem;
 }
 
 .blog .share {
@@ -97,6 +96,7 @@
     height: 150px;
     overflow: auto;
     font-size: 1.3rem;
+    color: rgba(0,0,0,0.8);
 }
 
 .blog p::first-letter {
@@ -106,6 +106,8 @@
 .blog h4 {
     color: gray;
     margin: 1rem 0.5rem;
+    border-bottom: 1.4px solid teal;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .blog h4 span {
