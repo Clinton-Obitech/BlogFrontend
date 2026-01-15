@@ -8,10 +8,10 @@ import { formatDistanceToNow } from "date-fns";
 
 function BlogCard({blog}) {
     const [count, setCount] = useState({
-        likes: null,
-        hearts: null,
-        laughs: null,
-        dislikes: null,
+        likes: 0,
+        hearts: 0,
+        laughs: 0,
+        dislikes: 0,
     })
 
     const formatCount = (num) => {
@@ -29,6 +29,10 @@ function BlogCard({blog}) {
 
     const react = async (type) => {
         const blogId = blog.id;
+        setCount(prev => ({
+            ...prev,
+            [type]: prev[type] !== null ? prev[type] + 1 : 1
+        }));
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
@@ -58,10 +62,10 @@ function BlogCard({blog}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{Number(formatCount(count.likes !== null ? count.likes : ".."))}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{Number(formatCount(count.hearts !== null ? count.hearts : ".."))}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{Number(formatCount(count.laughs !== null ? count.laughs : ".."))}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{Number(formatCount(count.dislikes !== null ? count.dislikes : ".."))}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{Number(formatCount(count.likes))}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{Number(formatCount(count.hearts))}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{Number(formatCount(count.laughs))}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{Number(formatCount(count.dislikes))}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
