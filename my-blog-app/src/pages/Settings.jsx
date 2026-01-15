@@ -5,6 +5,7 @@ import styles from "./Page.module.css"
 export default function Settings() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false)
 
         useEffect(() => {
             const fetchInfo = async () => {
@@ -18,46 +19,73 @@ export default function Settings() {
         }
         fetchInfo();
         }, [])
+
+        const handleInputs = (e) => {
+            setUser(prev => ({
+                ...prev, [e.target.name]: e.target.value
+        }))
+        }
+
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            try {
+              setSaving(true)
+              const res = await api.put("/api/update/user", user)
+              toast.success(res.data.message)
+            } catch (err) {
+              toast.error(err.response?.data?.message || "Update failed");
+            } finally {
+              setSaving(false)
+            }
+        }
     
 
     
     if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading Settings...</h3>)
     return (
         <div className={styles.userInfo}>
-            <h2>Settings</h2>
             <div>
-                <div>
-                    <form>
+                <div className={updateInfo}>
+                    Update Personal Information
+                    <form onSubmit={handleSubmit}>
                         <fieldset>
                             <legend>firstname</legend>
                             <input
                             type="text"
+                            name="firstname"
                             value={user.firstname}
+                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
                             <legend>lastname</legend>
                             <input
                             type="text"
+                            name="lastname"
                             value={user.lastname}
+                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
                             <legend>username</legend>
                             <input
                             type="text"
+                            name="username"
                             value={user.username}
+                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
                             <legend>email</legend>
                             <input
                             type="email"
+                            name="email"
                             value={user.email}
+                            onChange={handleInputs}
                             />
                         </fieldset>
                         
-                        <button type="submit">Save</button>
+                        <button disabled={saving} type="submit">Save</button>
                     </form>
                 </div>
             </div>
