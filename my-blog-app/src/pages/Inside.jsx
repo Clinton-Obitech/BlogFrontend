@@ -31,7 +31,7 @@ function BlogCard({blog}) {
         const blogId = blog.id;
         setCount(prev => ({
             ...prev,
-            [type]: prev[type] !== null ? prev[type] + 1 : 1
+            [type]: prev[type] + 1
         }));
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
