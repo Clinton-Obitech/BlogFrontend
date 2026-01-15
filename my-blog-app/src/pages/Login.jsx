@@ -48,6 +48,12 @@ export default function LoginPage() {
         <>
         <form className={styles.form} onSubmit={handleSubmit}>
             <legend>Login</legend>
+            <div className={styles.loginContent}>
+            <div>
+              <span>Don't have an account</span><NavLink to="/Register">create account</NavLink>  
+            </div>
+            <button type="button">Google</button>
+            </div>
             <fieldset>
             <legend>Username</legend>
             <input
@@ -67,10 +73,11 @@ export default function LoginPage() {
             onChange={HandleData}
             />
             </fieldset>
+            <NavLink to="/forgetPassword">Forgot your password?</NavLink>
             <button disabled={loading} type='submit'>{loading ? "Logging in..." : "Login"}</button>
         </form>
         <button style={{display: "block", margin: "auto", color: "teal", fontSize: "1rem", border: "none", backgroundColor: "transparent"}} type="button">
-            <NavLink style={{color: "teal"}} to="/Register">create account</NavLink>
+            
         </button>
         </>
     )

@@ -93,7 +93,7 @@
 
 .blog p {
     text-align: justify;
-    padding: 0 0.2rem;
+    padding: 0.3rem 0.2rem;
     font-size: 1.2rem;
     height: 150px;
     overflow: auto;
@@ -221,4 +221,24 @@
 
 .userInfo > ul h2 {
     margin-bottom: 0.5rem;
+}
+
+.loginContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContent > div {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+.loginContent button {
+    width: 80%;
+    padding: 1rem;
+    margin: auto;
 }
