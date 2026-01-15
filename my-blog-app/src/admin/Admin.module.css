@@ -68,7 +68,7 @@
 }
 
 .view > img {
-    height: 30%;
+    height: 35%;
     width: 100%;
     object-fit: cover;
 }
@@ -91,15 +91,15 @@
 }
 
 .view > h5 {
-    height: 10%;
+    height: 5%;
 }
 
 .view > h4 {
-    height: 10%;
+    height: 5%;
 }
 
 .ratebtn {
-    height: 10%;
+    height: 5%;
     margin-left: 1rem;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .modBtn {
-    padding: 0.5rem 0.5rem 0;
+    height: 10%;
 }
 
 .blogsNavigation {
