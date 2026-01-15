@@ -2,6 +2,7 @@ import styles from "./components.module.css";
 import { useEffect, useState } from 'react'
 import api from "../api/axios.js";
 import UserInfo from "../pages/UserInfo.jsx";
+import Settings from "../pages/Settings.jsx";
 
 export default function SideNav({user, setUser}) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function SideNav({user, setUser}) {
     }
   const navItems = [
     {key: "user", label: "User Information", component: <UserInfo />},
+    {key: "settings", label: "User Settings", component: <Settings /> }
   ]
 
   const handleToggle = (key) => {
