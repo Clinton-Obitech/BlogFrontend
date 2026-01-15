@@ -53,6 +53,13 @@ export default function RegisterPage() {
         <>
         <form onSubmit={SubmitForm} className={styles.form}>
             <legend>Sign Up</legend>
+            <div className={styles.loginContent}>
+            <div>
+              <span>Already have an account?</span><NavLink to="/Login">Sign in</NavLink>  
+            </div>
+            <button type="button"><i class="fa-brands fa-google"></i></button>
+            <span>OR</span>
+            </div>
             <fieldset>
             <legend>Firstname</legend>
             <input

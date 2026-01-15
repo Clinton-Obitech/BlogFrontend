@@ -250,7 +250,6 @@
 }
 
 .loginContent > span {
-    margin-bottom: -0.8rem;
     background-color: white;
     padding: 1rem;
 }
@@ -263,6 +262,18 @@
     color: black;
     border: 1.5px solid black;
     border-radius: 5px;
+}
+
+.loginContent button > i {
+  background: linear-gradient(
+    45deg,
+    #4285F4,
+    #EA4335,
+    #FBBC05,
+    #34A853
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .form a {
