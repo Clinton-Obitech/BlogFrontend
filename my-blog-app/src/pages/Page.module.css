@@ -63,19 +63,20 @@
 }
 
 .blog > h2 {
-    padding: 0.2rem 0.4rem 0.2rem;
-    font-size: 0.9rem;
+    padding: 0.3rem 0.4rem 0.4rem;
+    font-size: 1rem;
 }
 
 .blog .share {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 0.4rem 1rem;
+    padding: 0.6rem 1rem 0.4rem;
 }
 
 .blog .share > span {
     margin-right: 1rem;
+    color: gray;
 }
 
 .blog .share button {
@@ -90,12 +91,16 @@
 }
 
 .blog p {
-    text-align: left;
+    text-align: justify;
     padding: 0 0.2rem;
     font-size: 1.2rem;
     height: 150px;
     overflow: auto;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+}
+
+.blog p::first-letter {
+    text-transform: uppercase;
 }
 
 .blog h4 {
