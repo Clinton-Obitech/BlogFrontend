@@ -63,11 +63,12 @@
     box-shadow: 0px 0px 3px black;
     border-radius: 5px;
     min-width: 90%;
-    margin: 0.5rem 1rem 0.5rem 0.5rem;
+    height: 100%;
+    margin-right: 1rem;
 }
 
 .view > img {
-    height: 200px;
+    height: 30%;
     width: 100%;
     object-fit: cover;
 }
@@ -77,27 +78,28 @@
     margin: 0;
     text-align: left;
     color: black;
+    height: 20%;
+    overflow: auto;
     text-transform: uppercase;
 }
 
 .view > p {
     padding: 0.5rem;
     text-align: justify;
-    height: 100px;
+    height: 20%;
     overflow: auto;
 }
 
 .view > h5 {
-    padding: 0.5rem 0.5rem 0;
+    height: 10%;
 }
 
 .view > h4 {
-    margin-left: 1rem;
-    padding-bottom: 0.3rem;
+    height: 10%;
 }
 
 .ratebtn {
-    padding: 0.2rem 0.5rem;
+    height: 10%;
     margin-left: 1rem;
 }
 
@@ -119,7 +121,7 @@
     width: 95%;
     margin: 1rem auto;
     padding: 0.5rem;
-    background-color: red;
+    background-color: transparent;
     height: 400px;
 }
 
@@ -189,5 +191,5 @@
     text-align: center;
     border: 1px solid black;
     border-radius: 5px;
-    padding-top: 4rem;
+    padding-top: 7rem;
 }
