@@ -50,9 +50,10 @@ export default function LoginPage() {
             <legend>Login</legend>
             <div className={styles.loginContent}>
             <div>
-              <span>Don't have an account</span><NavLink to="/Register">create account</NavLink>  
+              <span>Don't have an account?</span><NavLink to="/Register">Create account</NavLink>  
             </div>
             <button type="button">Google</button>
+            <span>OR</span>
             </div>
             <fieldset>
             <legend>Username</legend>

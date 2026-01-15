@@ -241,14 +241,18 @@
     margin-bottom: 1rem;
 }
 
-.loginContent span {
-    margin-right: 1rem;
+.loginContent div > span {
+    margin-right: 0.5rem;
 }
 
 .loginContent a {
-    text-transform: capitalize;
     color: teal;
-    text-decoration: none;
+}
+
+.loginContent > span {
+    margin-bottom: -0.8rem;
+    background-color: white;
+    padding: 1rem;
 }
 
 .loginContent button {
@@ -257,6 +261,8 @@
     margin: auto;
     background-color: transparent;
     color: black;
+    border: 1.5px solid black;
+    border-radius: 5px;
 }
 
 .form a {
