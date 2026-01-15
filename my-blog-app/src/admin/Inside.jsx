@@ -143,6 +143,7 @@ export default function AdminInside() {
 
         } catch (err) {
             toast.error(err.response?.data?.message || "Something went wrong");
+            if(err) {setPostLoading(false)}
         } finally {
             setPostLoading(false)
         }
@@ -156,11 +157,10 @@ export default function AdminInside() {
             Object.entries(blogData).forEach(([key, value]) =>
                 formData.append(key, value)
             );
-
-            const res = await axios.put(
+            setPostLoading(true)
+            const res = await api.put(
                 `/api/admin/update/${BlogId}`,
-                formData,
-                { withCredentials: true }
+                formData
             );
 
             toast.success(res.data.message);
@@ -175,6 +175,9 @@ export default function AdminInside() {
 
         } catch (err) {
             toast.error(err.response?.data?.message || "Update failed");
+            if(err) {setPostLoading(false)}
+        } finally {
+            setPostLoading(false)
         }
     };
 
@@ -182,10 +185,9 @@ export default function AdminInside() {
         if (!confirm("Proceed to delete post?")) return;
 
         try {
-            const res = await axios.post(
+            const res = await api.post(
                 `/api/admin/delete/${id}`,
-                {},
-                { withCredentials: true }
+                {}
             );
 
             toast.success(res.data.message);
@@ -279,7 +281,8 @@ export default function AdminInside() {
                 onChange={HandleInputs} 
                 />
                 </label>
-                <button type="submit" disabled={postLoading}>{editMode ? "Update Post" : "Post News"}</button>
+                {postLoading && <p>{editMode ? "Updating..." : "Posting..."}</p>}
+                <button type="submit" disabled={postLoading}>{editMode ? "Update News" : "Post News"}</button>
 
                 {editMode && (
                     <button type="button" onClick={resetForm}>
