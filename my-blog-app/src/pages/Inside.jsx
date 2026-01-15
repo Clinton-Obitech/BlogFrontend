@@ -8,10 +8,10 @@ import { formatDistanceToNow } from "date-fns";
 
 function BlogCard({blog}) {
     const [count, setCount] = useState({
-        likes: 0,
-        hearts: 0,
-        laughs: 0,
-        dislikes: 0,
+        likes: null,
+        hearts: null,
+        laughs: null,
+        dislikes: null,
     })
 
     const formatCount = (num) => {
