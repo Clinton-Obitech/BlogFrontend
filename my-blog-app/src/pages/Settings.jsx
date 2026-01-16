@@ -39,7 +39,6 @@ export default function Settings() {
                             type="text"
                             name="firstname"
                             value={user.firstname}
-                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
@@ -48,7 +47,6 @@ export default function Settings() {
                             type="text"
                             name="lastname"
                             value={user.lastname}
-                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
@@ -57,7 +55,6 @@ export default function Settings() {
                             type="text"
                             name="username"
                             value={user.username}
-                            onChange={handleInputs}
                             />
                         </fieldset>
                         <fieldset>
@@ -66,7 +63,6 @@ export default function Settings() {
                             type="email"
                             name="email"
                             value={user.email}
-                            onChange={handleInputs}
                             />
                         </fieldset>
                         
