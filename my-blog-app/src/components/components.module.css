@@ -17,12 +17,11 @@
 
 .sideNav > .dropDiv {
     background-color: white;
-    padding: 1rem 1rem 15rem;
+    padding: 1rem 1rem 1rem;
     position: absolute;
     width: 90%;
     height: 100vh;
     left: 0;
-    overflow: auto;
     list-style-type: none;
     display: flex;
     flex-direction: column;
