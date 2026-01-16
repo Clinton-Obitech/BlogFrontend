@@ -75,13 +75,14 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-.blog .share > span {
-    margin-right: 1rem;
-    color: gray;
+.blog .share button {
+    border: none;
+    background-color: transparent;
+    color: grey;
 }
 
-.blog .share button {
-    margin-right: 0.4rem;
+.blog .share i {
+    color: black;
 }
 
 .blog img {
@@ -93,7 +94,7 @@
 
 .blog p {
     text-align: justify;
-    padding: 0.3rem 0.2rem;
+    padding: 0.3rem 0.5rem;
     font-size: 1.2rem;
     height: 150px;
     overflow: auto;

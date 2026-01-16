@@ -66,11 +66,7 @@ function BlogCard({blog}) {
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
             <div className={styles.share}>
-                <span>Share</span>
-                <button type="button">whatsapp</button>
-                <button type="button">facebook</button>
-                <button type="button">twitter</button>
-                <button type="button">instagram</button>
+                <button type="button">Share <i className="fa-solid fa-share"></i></button>
             </div>
         </div>
     )
