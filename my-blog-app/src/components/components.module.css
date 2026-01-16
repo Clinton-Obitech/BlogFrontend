@@ -22,6 +22,7 @@
     width: 90%;
     height: 100vh;
     left: 0;
+    overflow: auto;
     list-style-type: none;
     display: flex;
     flex-direction: column;
