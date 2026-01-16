@@ -47,7 +47,6 @@ export default function Settings() {
         <div className={styles.userInfo}>
             <div>
                 <div className={updateInfo}>
-                    Update Personal Information
                     <form onSubmit={handleSubmit}>
                         <fieldset>
                             <legend>firstname</legend>
