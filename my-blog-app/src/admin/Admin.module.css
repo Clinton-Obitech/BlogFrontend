@@ -90,12 +90,16 @@
     padding: 0.4rem;
     border: 1.5px solid grey;
     border-radius: 5px;
+    justify-self: flex-start;
+    margin: 0.4rem;
 }
 
 .view > h4 {
     padding: 0.4rem 1rem;
     border: 1.5px solid grey;
     border-radius: 5px;
+    justify-self: flex-start;
+    margin: 0.4rem;
 }
 
 .ratebtn {
