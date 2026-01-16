@@ -5,6 +5,7 @@ import UserInfo from "../pages/UserInfo.jsx";
 import Settings from "../pages/Settings.jsx";
 import Terms from "../pages/Terms.jsx";
 import Contact from "../pages/Contact.jsx";
+import About from "../pages/About.jsx";
 import Privacy from "../pages/Privacy.jsx";
 
 export default function SideNav({user, setUser}) {
