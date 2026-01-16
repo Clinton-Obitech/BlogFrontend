@@ -11,7 +11,7 @@ export default function Settings() {
         email: "",
     })
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
 
     const handleInputs = (e) => {
@@ -45,7 +45,6 @@ export default function Settings() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                setLoading(true)
                 const res = await api.get("/api/user");
                 setUserData({
                     firstname: res.data.user.firstname,
@@ -95,7 +94,7 @@ export default function Settings() {
             onChange={handleInputs}
             />
 
-            <button style={{backgroundClip: "teal"}} disabled={saving} type="submit">Save</button>
+            <button style={{backgroundColor: "teal"}} disabled={saving} type="submit">Save</button>
         </form>
         </>
     )
