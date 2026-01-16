@@ -4,7 +4,7 @@ export default function Privacy() {
     return (
         <div className={styles.tacp}>
   <h3>Privacy Policies</h3>
-  <p>At <strong>[Your Blog Name]</strong>, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
+  <p>At <strong>Blog website</strong>, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
 
   <h4>Information We Collect</h4>
   <p>We may collect personal information such as your name or email address when you subscribe, comment, or contact us.</p>

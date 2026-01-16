@@ -25,6 +25,7 @@ export default function LoginAdmin() {
             const response = await api.post("/api/login/admin", formData)
             if (response.data.success) {
             toast.success(response.data.message)
+            localStorage.setItem("admin", JSON.stringify(response.data.admin))
             setTimeout(() => {
                 setLoading(false)
                 navigate('/admin/Dashboard', {replace: true})

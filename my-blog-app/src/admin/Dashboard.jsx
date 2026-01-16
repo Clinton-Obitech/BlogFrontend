@@ -6,11 +6,13 @@ import { toast } from "react-toastify";
 
 export default function Dashboard() {
     const [admin, setAdmin] = useState({});
+    const [username, setUsername] = useState({});
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
+        setUsername(JSON.parse(localStorage.getItem("admin")));
         const getAdmin = async () => {
             try {
             const res = await api.get("/api/admin/dashboard");
@@ -38,7 +40,7 @@ export default function Dashboard() {
 
    return (
     <div className={styles.adminHeader}>
-    {admin ? <h2>{admin.username} Dashboard</h2> : <h2>Loading...</h2>}
+    {admin ? <h2>{username.username} Dashboard</h2> : <h2>Loading...</h2>}
     <button disabled={loading} onClick={logOut}>{loading ? "Logging out..." : "Logout"}</button>
     </div>
    )
