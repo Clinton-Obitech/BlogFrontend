@@ -17,7 +17,7 @@ export default function UsersInfo() {
 
     return (
         <div className={styles.userInfo}>
-           {loading ? (<h3 style={{marginTop: "0.7rem"}}>Loading...</h3>) : (
+           {loading ? (<h3 style={{margin: "0.7rem 1rem 0"}}>Loading...</h3>) : (
 
             <ul>
                 <h2>Your Information</h2>

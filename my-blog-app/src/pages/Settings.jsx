@@ -61,12 +61,12 @@ export default function Settings() {
         fetchUser();
     }, [])
     
-    if (loading) return (<h3 style={{marginTop: "0.7rem"}}>Loading...</h3>);
+    if (loading) return (<h3 style={{margin: "0.7rem 1rem 0"}}>Loading...</h3>);
     return (
         <>
         <form className={styles.formSettings} onSubmit={handleSubmit}>
             <h2>Settings</h2>
-            
+
             <fieldset>
             <legend>firstname</legend>
             <input
