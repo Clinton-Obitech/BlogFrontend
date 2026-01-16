@@ -318,6 +318,8 @@
 .tacp {
     padding: 0.5rem;
     box-shadow: 0px 0px 3px black;
+    margin-top: 1rem;
+    border-radius: 5px;
 }
 
 .tacp > h2 {
@@ -326,6 +328,7 @@
 
 .tacp > h3 {
    margin: 0.5rem 0 0.3rem;
+   color: teal;
 }
 
 .tacp > p {
