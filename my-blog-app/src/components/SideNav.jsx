@@ -47,6 +47,13 @@ export default function SideNav({user, setUser}) {
     {key: "contact", label: "Contact", component: <Contact />}
   ]
 
+  const navOfflineItems = [
+    {key: "terms", label: "Terms", component: <Terms />},
+    {key: "privacy", label: "Privacy", component: <Privacy />},
+    {key: "about", label: "About", component: <About />},
+    {key: "contact", label: "Contact", component: <Contact />}
+  ]
+
   const handleToggle = (key) => {
       setActive(prev => (prev === key ? null : key))
     }
@@ -60,9 +67,23 @@ export default function SideNav({user, setUser}) {
             <button className={styles.logoutBtn} disabled={loading} onClick={logOut}>{loading ? "Logging Out.." : "Logout"}</button> : null
           }
           
-          
             {navItems.map(item => (
             user && (
+                <div key={item.key}>
+              <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{item.label}</button>
+
+              {active === item.key && (
+                <>
+                {item.component}
+                </>
+              )}
+            </div>
+            )
+  
+          ))}
+
+          {navOfflineItems.map(item => (
+            !user && (
                 <div key={item.key}>
               <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{item.label}</button>
 
