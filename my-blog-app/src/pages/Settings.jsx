@@ -11,6 +11,9 @@ export default function Settings() {
         email: "",
     })
 
+    const [loading, setLoading] = useState(false);
+    const [saving, setSaving] = useState(false);
+
     const handleInputs = (e) => {
         setUserData(prev => ({
             ...prev,
@@ -21,21 +24,28 @@ export default function Settings() {
     const handleSubmit = async (e) => {
        e.preventDefault();
        try {
+        setSaving(true)
         const res = await api.put("/api/update/user", userData)
+        toast.success(res.data.message)
         setUserData({
-                    firstname: res.data.user.firstname,
-                    lastname: res.data.user.lastname,
-                    username: res.data.user.username,
-                    email: res.data.user.email,
+            firstname: res.data.user.firstname,
+            lastname: res.data.user.lastname,
+            username: res.data.user.username,
+            email: res.data.user.email,
                 })
        } catch (err) {
         console.error(err)
+        toast.error(err.response?.data?.message || "Update failed");
+        setSaving(false)
+       } finally {
+        setSaving(false)
        }
     }
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
+                setLoading(true)
                 const res = await api.get("/api/user");
                 setUserData({
                     firstname: res.data.user.firstname,
@@ -45,11 +55,14 @@ export default function Settings() {
                 })
             } catch (err) {
                 console.error(err)
+            } finally {
+                setLoading(false);
             }
         }
         fetchUser();
     }, [])
-
+    
+    if (loading) return (<p>Loading...</p>);
     return (
         <>
         <h1>Settings</h1>
@@ -82,7 +95,7 @@ export default function Settings() {
             onChange={handleInputs}
             />
 
-            <button type="submit">Save</button>
+            <button style={{backgroundClip: "teal"}} disabled={saving} type="submit">Save</button>
         </form>
         </>
     )
