@@ -6,9 +6,8 @@ import { toast } from "react-toastify";
 export default function Settings() {
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const [saving, setSaving] = useState(false);
 
-        useEffect(() => {
+        /*useEffect(() => {
             const fetchInfo = async () => {
             try {
                 const res = await api.get("/api/user")
@@ -19,7 +18,7 @@ export default function Settings() {
             } 
         }
         fetchInfo();
-        }, [])
+        }, [])*/
     
     if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading Settings...</h3>)
     return (
@@ -32,7 +31,6 @@ export default function Settings() {
                             <input
                             type="text"
                             name="firstname"
-                            value={user.firstname}
                             />
                         </fieldset>
                         <fieldset>
@@ -40,7 +38,6 @@ export default function Settings() {
                             <input
                             type="text"
                             name="lastname"
-                            value={user.lastname}
                             />
                         </fieldset>
                         <fieldset>
@@ -48,7 +45,6 @@ export default function Settings() {
                             <input
                             type="text"
                             name="username"
-                            value={user.username}
                             />
                         </fieldset>
                         <fieldset>
@@ -56,7 +52,6 @@ export default function Settings() {
                             <input
                             type="email"
                             name="email"
-                            value={user.email}
                             />
                         </fieldset>
                         
