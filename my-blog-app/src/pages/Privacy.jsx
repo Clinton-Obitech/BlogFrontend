@@ -26,7 +26,7 @@ export default function Privacy() {
 
   <h4>Contact</h4>
   <p>If you have any questions about this Privacy Policy, contact us at 
-    <a href="mailto:[your email]">[your email]</a>.
+    <a href="mailto:[your email]">Blogwebsite@gmail.com</a>.
   </p>
         </div>
     )

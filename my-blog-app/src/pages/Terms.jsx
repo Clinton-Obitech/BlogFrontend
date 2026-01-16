@@ -4,7 +4,7 @@ export default function Terms() {
  return (
   <div className={styles.tacp}>
   <h3>Terms and Condition</h3>
-  <p>Welcome to <strong>[Your Blog Name]</strong>. By accessing or using this website, you agree to comply with and be bound by these Terms and Conditions.</p>
+  <p>Welcome to <strong>Blog website</strong>. By accessing or using this website, you agree to comply with and be bound by these Terms and Conditions.</p>
 
   <h4>Use of Content</h4>
   <p>All content published on this blog is for informational purposes only. You may not copy, reproduce, or redistribute any content without prior written permission.</p>
@@ -25,7 +25,7 @@ export default function Terms() {
   <p>We may update these Terms and Conditions at any time. Continued use of the site means you accept the updated terms.</p>
 
   <h4>Contact</h4>
-  <p>If you have any questions about these Terms, please contact us at <a href="mailto:[your email]">[your email]</a>.</p>
+  <p>If you have any questions about these Terms, please contact us at <a href="mailto:[your email]">Blogwebsite@gmail.com</a>.</p>
         </div>
     )
 }

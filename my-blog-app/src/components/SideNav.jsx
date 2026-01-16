@@ -4,7 +4,6 @@ import api from "../api/axios.js";
 import UserInfo from "../pages/UserInfo.jsx";
 import Settings from "../pages/Settings.jsx";
 import Terms from "../pages/Terms.jsx";
-import Contact from "../pages/Contact.jsx";
 import About from "../pages/About.jsx";
 import Privacy from "../pages/Privacy.jsx";
 
@@ -43,15 +42,13 @@ export default function SideNav({user, setUser}) {
     {key: "settings", label: "User Settings", component: <Settings /> },
     {key: "terms", label: "Terms", component: <Terms />},
     {key: "privacy", label: "Privacy", component: <Privacy />},
-    {key: "about", label: "About", component: <About />},
-    {key: "contact", label: "Contact", component: <Contact />}
+    {key: "about", label: "About", component: <About />}
   ]
 
   const navOfflineItems = [
     {key: "terms", label: "Terms", component: <Terms />},
     {key: "privacy", label: "Privacy", component: <Privacy />},
-    {key: "about", label: "About", component: <About />},
-    {key: "contact", label: "Contact", component: <Contact />}
+    {key: "about", label: "About", component: <About />}
   ]
 
   const handleToggle = (key) => {
