@@ -3,7 +3,7 @@ import styles from "./Page.module.css";
 export default function About() {
     return (
         <div className={styles.tacp}>
-        <h2>About Us</h2>
+        <h3>About Us</h3>
         <p>
     <strong>[Your Blog Name]</strong> is a blog created to share informative, engaging, and well-researched content on topics that matter.
   </p>

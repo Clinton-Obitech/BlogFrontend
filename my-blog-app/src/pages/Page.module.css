@@ -316,21 +316,25 @@
 }
 
 .tacp {
-    padding: 0.5rem;
+    padding: 1rem;
     box-shadow: 0px 0px 3px black;
     margin-top: 1rem;
     border-radius: 5px;
 }
 
-.tacp > h2 {
-    padding: 0.5rem;
+.tacp > h3 {
+    padding: 0 0.5rem 1rem;
+    text-align: center;
 }
 
-.tacp > h3 {
+.tacp > h4 {
    margin: 0.5rem 0 0.3rem;
    color: teal;
+   text-align: center;
+   text-shadow: 1px 1px 1px black;
 }
 
 .tacp > p {
     margin: 0 0 0.6rem;
+    text-align: center;
 }
