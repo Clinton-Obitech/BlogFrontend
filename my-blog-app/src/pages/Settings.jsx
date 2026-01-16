@@ -65,8 +65,7 @@ export default function Settings() {
     return (
         <>
         <form className={styles.formSettings} onSubmit={handleSubmit}>
-            <h2>Settings</h2>
-
+            <h2 style={{marginBottom: "0.4rem"}}>Update Personal Information</h2>
             <fieldset>
             <legend>firstname</legend>
             <input

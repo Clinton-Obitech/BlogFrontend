@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react'
 import api from "../api/axios.js";
 import UserInfo from "../pages/UserInfo.jsx";
 import Settings from "../pages/Settings.jsx";
+import Terms from "../pages/Terms.jsx";
+import Contact from "../pages/Contact.jsx";
+import Privacy from "../pages/Privacy.jsx";
 
 export default function SideNav({user, setUser}) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -36,7 +39,11 @@ export default function SideNav({user, setUser}) {
     }
   const navItems = [
     {key: "user", label: "User Information", component: <UserInfo />},
-    {key: "setting", label: "User Settings", component: <Settings /> }
+    {key: "settings", label: "User Settings", component: <Settings /> },
+    {key: "terms", label: "Terms", component: <Terms />},
+    {key: "privacy", label: "Privacy", component: <Privacy />},
+    {key: "about", label: "About", component: <About />},
+    {key: "contact", label: "Contact", component: <Contact />}
   ]
 
   const handleToggle = (key) => {
