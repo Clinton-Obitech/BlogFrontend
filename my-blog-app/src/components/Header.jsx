@@ -42,7 +42,7 @@ function Header() {
           <div>
           {user ? 
           <div style={userStyle}>
-            <div style={{height: "25px", width: "25px", borderRadius: "100%", backgroundColor: "green"}}></div>
+            <div style={{height: "25px", width: "25px", borderRadius: "100%", backgroundColor: "teal"}}></div>
             <h3 style={{marginLeft: "0.2rem"}}>{user?.username??"..."}</h3>
           </div>
            : 

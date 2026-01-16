@@ -107,7 +107,7 @@ export default function Settings() {
             />
             </fieldset>
 
-            <button style={{backgroundColor: "teal"}} disabled={saving} type="submit">Save</button>
+            <button style={{backgroundColor: "teal"}} disabled={saving} type="submit">{saving ? "Saving..." : "Save"}</button>
         </form>
         </>
     )
