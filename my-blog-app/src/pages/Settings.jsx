@@ -1,6 +1,6 @@
 import api from "../api/axios.js";
-import { useEffect, useState } from "react"
-import styles from "./Page.module.css"
+import { useEffect, useState } from "react";
+import styles from "./Page.module.css";
 import { toast } from "react-toastify";
 
 export default function Settings() {
@@ -31,7 +31,7 @@ export default function Settings() {
             e.preventDefault();
             try {
               setSaving(true)
-              const res = await api.put("/api/update/user", user)
+              const res = await api.put("/api/update/user")
               toast.success(res.data.message)
             } catch (err) {
               toast.error(err.response?.data?.message || "Update failed");
