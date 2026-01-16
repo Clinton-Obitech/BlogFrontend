@@ -281,3 +281,34 @@
    margin-bottom: 0.5rem;
    color: teal;
 }
+
+.formSettings {
+   width: 80%;
+   margin: 0.7rem auto;
+   padding: 0.5rem;
+   box-shadow: 0px 0px 3px black;
+   border-radius: 5px;
+}
+
+.formSettings input {
+    border: none;
+    outline: none;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.formSettings fieldset {
+    padding: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.formSettings legend {
+    padding: 0 0.5rem;
+}
+
+.formSettings button {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    color: white;
+}

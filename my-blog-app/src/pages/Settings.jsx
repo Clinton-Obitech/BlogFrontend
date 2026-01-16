@@ -61,38 +61,51 @@ export default function Settings() {
         fetchUser();
     }, [])
     
-    if (loading) return (<p>Loading...</p>);
+    if (loading) return (<h3 style={{marginTop: "0.7rem"}}>Loading...</h3>);
     return (
         <>
-        <h1>Settings</h1>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.formSettings} onSubmit={handleSubmit}>
+            <h2>Settings</h2>
+            
+            <fieldset>
+            <legend>firstname</legend>
             <input
             type="text"
             name="firstname"
             value={userData.firstname}
             onChange={handleInputs}
             />
+            </fieldset>
 
-             <input
+            <fieldset>
+            <legend>lastname</legend>
+            <input
             type="text"
             name="lastname"
             value={userData.lastname}
             onChange={handleInputs}
             />
+            </fieldset>
 
-             <input
+            <fieldset>
+            <legend>username</legend>
+            <input
             type="text"
             name="username"
             value={userData.username}
             onChange={handleInputs}
             />
+            </fieldset>
 
-             <input
+            <fieldset>
+            <legend>email address</legend>
+            <input
             type="email"
             name="email"
             value={userData.email}
             onChange={handleInputs}
             />
+            </fieldset>
 
             <button style={{backgroundColor: "teal"}} disabled={saving} type="submit">Save</button>
         </form>

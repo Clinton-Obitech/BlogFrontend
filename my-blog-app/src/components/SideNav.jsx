@@ -49,7 +49,7 @@ export default function SideNav({user, setUser}) {
         {menuOpen && (
           <div className={styles.dropDiv}>
           {user ?  
-            <button className={styles.logoutBtn} onClick={logOut}>{loading ? "Logging Out.." : "Logout"}</button> : null
+            <button className={styles.logoutBtn} disabled={loading} onClick={logOut}>{loading ? "Logging Out.." : "Logout"}</button> : null
           }
           
           
