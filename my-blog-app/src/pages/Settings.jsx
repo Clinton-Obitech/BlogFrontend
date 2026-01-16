@@ -20,12 +20,6 @@ export default function Settings() {
         }
         fetchInfo();
         }, [])
-
-        const handleInputs = (e) => {
-            setUser(prev => ({
-                ...prev, [e.target.name]: e.target.value
-        }))
-    }
     
     if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading Settings...</h3>)
     return (
@@ -66,7 +60,7 @@ export default function Settings() {
                             />
                         </fieldset>
                         
-                        <button disabled={saving} type="submit">Save</button>
+                        <button type="submit">Save</button>
                     </form>
                 </div>
             </div>
