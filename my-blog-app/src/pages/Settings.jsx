@@ -21,11 +21,11 @@ export default function Settings() {
         fetchInfo();
         }, [])
 
-        const handleInputs = (e) => {
+        /*const handleInputs = (e) => {
             setUser(prev => ({
                 ...prev, [e.target.name]: e.target.value
         }))
-    }
+    }*/
 
         const handleSubmit = async (e) => {
             e.preventDefault();
