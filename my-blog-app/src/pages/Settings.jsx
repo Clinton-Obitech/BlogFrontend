@@ -21,33 +21,18 @@ export default function Settings() {
         fetchInfo();
         }, [])
 
-        /*const handleInputs = (e) => {
+        const handleInputs = (e) => {
             setUser(prev => ({
                 ...prev, [e.target.name]: e.target.value
         }))
-    }*/
-
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-            try {
-              setSaving(true)
-              const res = await api.put("/api/update/user")
-              toast.success(res.data.message)
-            } catch (err) {
-              toast.error(err.response?.data?.message || "Update failed");
-            } finally {
-              setSaving(false)
-            }
-        }
-    
-
+    }
     
     if (loading) return (<h3 style={{textAlign: "center", paddingTop: "1rem"}} className={styles.userInfo}>Loading Settings...</h3>)
     return (
         <div className={styles.userInfo}>
             <div>
                 <div className={updateInfo}>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <fieldset>
                             <legend>firstname</legend>
                             <input

@@ -36,7 +36,7 @@ export default function SideNav({user, setUser}) {
     }
   const navItems = [
     {key: "user", label: "User Information", component: <UserInfo />},
-    {key: "settings", label: "User Settings", component: <Settings /> }
+    {key: "setting", label: "User Settings", component: <Settings /> }
   ]
 
   const handleToggle = (key) => {
