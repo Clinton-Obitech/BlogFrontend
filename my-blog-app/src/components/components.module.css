@@ -1,6 +1,5 @@
 .sideNav {
     padding: 0 0.2rem 0 0.3rem;
-    margin-bottom: 3rem;
 }
 
 .sideNav > i {
@@ -18,7 +17,7 @@
 
 .sideNav > .dropDiv {
     background-color: white;
-    padding: 1rem 1rem 1rem;
+    padding: 1rem 1rem 10rem;
     position: absolute;
     width: 90%;
     height: 100vh;
