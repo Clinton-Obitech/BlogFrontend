@@ -22,6 +22,7 @@ export default function Newsletter() {
             toast.success(response.data.message)
         } catch (err) {
             toast.error(err.response?.data?.message)
+            setLoading(false)
         } finally {
             setLoading(false)
             setEmail({
