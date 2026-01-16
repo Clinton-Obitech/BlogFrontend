@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 export default function Settings() {
     const [user, setUser] = useState({});
-    const [loading, setLoading] = useState(true);
 
         /*useEffect(() => {
             const fetchInfo = async () => {
