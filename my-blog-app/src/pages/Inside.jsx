@@ -8,7 +8,7 @@ import { formatDistanceToNow } from "date-fns";
 function BlogCard({blog}) {
 
     const loading = useContext(blogLoading);
-    
+
     const [count, setCount] = useState({
         likes: 0,
         hearts: 0,
@@ -40,7 +40,7 @@ function BlogCard({blog}) {
 
     useEffect(() => {
         const blogId = blog.id;
-        async function getReactions() {
+        const getReactions = async () => {
 
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
