@@ -5,9 +5,9 @@ import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
-function BlogCard({blog}) {
+const reactContext = createContext();
 
-    const loading = useContext(blogLoading);
+function BlogCard({blog}, {children}) {
 
     const [count, setCount] = useState({
         likes: 0,
@@ -38,10 +38,6 @@ function BlogCard({blog}) {
         }
     }
 
-    if(loading) {
-        getReactions()
-    }
-
     useEffect(() => {
         const blogId = blog.id;
         async function getReactions() {
@@ -56,9 +52,10 @@ function BlogCard({blog}) {
 
         }
         getReactions();
-    }, [loading, react])
+    }, [react])
 
     return (
+        <reactContext.Provider value={{getReactions}}>
         <div className={styles.blog}>
             <small>{timeAgo(blog.posted_at)}</small>
             <h2>{(blog.title).toUpperCase()}</h2>
@@ -75,12 +72,14 @@ function BlogCard({blog}) {
                 <button type="button">Share <i className="fa-solid fa-share"></i></button>
             </div>
         </div>
+        {children}
+        </reactContext.Provider>
     )
 }
 
-const blogLoading = createContext();
 
-export default function Inside({children}) {
+export default function Inside() {
+    const { getReactions } = useContext(reactContext)
 
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -92,6 +91,7 @@ export default function Inside({children}) {
             setLoading(true)
             const res = await api.get(`/api/inside?date=${selectedDate}`)
             setBlogs(res.data.blogs)
+            getReactions()
         } catch (err) {
             console.error(err)
         } finally {
