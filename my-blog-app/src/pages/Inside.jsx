@@ -7,7 +7,7 @@ import { formatDistanceToNow } from "date-fns";
 
 const reactContext = createContext();
 
-function BlogCard({blog}, {children}) {
+function BlogCard({blog,children}) {
 
     const [count, setCount] = useState({
         likes: 0,
