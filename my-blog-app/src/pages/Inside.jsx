@@ -5,8 +5,10 @@ import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
+function BlogCard({blog}) {
 
-function BlogCard({blog, loading}) {
+    const loading = useContext(blogLoading);
+    
     const [count, setCount] = useState({
         likes: 0,
         hearts: 0,
@@ -38,7 +40,7 @@ function BlogCard({blog, loading}) {
 
     useEffect(() => {
         const blogId = blog.id;
-        const getReactions = async () => {
+        async function getReactions() {
 
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
@@ -50,7 +52,7 @@ function BlogCard({blog, loading}) {
 
         }
         getReactions();
-    }, [loading])
+    }, [loading, react])
 
     return (
         <div className={styles.blog}>
@@ -75,6 +77,7 @@ function BlogCard({blog, loading}) {
 const blogLoading = createContext();
 
 export default function Inside({children}) {
+
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -115,7 +118,7 @@ export default function Inside({children}) {
     return (
         <>
         <Mini_hero state="Inside Naija" />
-        <blogLoading value={loading}>
+        <blogLoading.Provider value={loading}>
         <div className={styles.blogsNavigation}>
         <button onClick={goToPreviousDay} type="button">Previous day</button>
         <input
@@ -136,7 +139,7 @@ export default function Inside({children}) {
 
         )}
         {children}
-        </blogLoading>
+        </blogLoading.Provider>
         </>
     )
 }
