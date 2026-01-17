@@ -6,8 +6,7 @@ import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
 
-function BlogCard({blog}) {
-    const loading = useContext(blogLoading)
+function BlogCard({blog, loading}) {
     const [count, setCount] = useState({
         likes: 0,
         hearts: 0,
@@ -51,7 +50,7 @@ function BlogCard({blog}) {
 
         }
         getReactions();
-    }, [react, loading])
+    }, [loading])
 
     return (
         <div className={styles.blog}>
@@ -73,7 +72,7 @@ function BlogCard({blog}) {
     )
 }
 
-export const blogLoading = createContext();
+const blogLoading = createContext();
 
 export default function Inside({children}) {
     const [blogs, setBlogs] = useState([]);
@@ -131,7 +130,7 @@ export default function Inside({children}) {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog}/>
+            <BlogCard key={blog.id} blog={blog} loading={loading}/>
         ))
         )
 
