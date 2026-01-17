@@ -38,9 +38,13 @@ function BlogCard({blog}) {
         }
     }
 
+    if(loading) {
+        getReactions()
+    }
+
     useEffect(() => {
         const blogId = blog.id;
-        const getReactions = async () => {
+        async function getReactions() {
 
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
