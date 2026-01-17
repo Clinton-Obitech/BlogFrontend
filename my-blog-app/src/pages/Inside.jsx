@@ -40,7 +40,7 @@ function BlogCard({blog}, {children}) {
 
     useEffect(() => {
         const blogId = blog.id;
-        async function getReactions() {
+        const getReactions = async () => {
 
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
@@ -55,7 +55,7 @@ function BlogCard({blog}, {children}) {
     }, [react])
 
     return (
-        <reactContext.Provider value={{getReactions}}>
+        <reactContext.Provider value={getReactions}>
         <div className={styles.blog}>
             <small>{timeAgo(blog.posted_at)}</small>
             <h2>{(blog.title).toUpperCase()}</h2>
@@ -91,7 +91,6 @@ export default function Inside() {
             setLoading(true)
             const res = await api.get(`/api/inside?date=${selectedDate}`)
             setBlogs(res.data.blogs)
-            getReactions()
         } catch (err) {
             console.error(err)
         } finally {
@@ -102,6 +101,7 @@ export default function Inside() {
 
     useEffect(() => {
         getBlogs(date)
+        getReactions()
     }, [date])
 
     const handleDateChange = (e) => {
