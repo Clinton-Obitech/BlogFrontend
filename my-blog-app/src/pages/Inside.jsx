@@ -5,9 +5,9 @@ import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
-const reactContext = createContext();
+const myContext = createContext();
 
-function BlogCard({blog,children}) {
+function BlogCard({blog}) {
 
     const [count, setCount] = useState({
         likes: 0,
@@ -55,7 +55,7 @@ function BlogCard({blog,children}) {
     }, [react])
 
     return (
-        <reactContext.Provider value={getReactions}>
+        <myContext.Provider value={{getReactions}}>
         <div className={styles.blog}>
             <small>{timeAgo(blog.posted_at)}</small>
             <h2>{(blog.title).toUpperCase()}</h2>
@@ -72,14 +72,15 @@ function BlogCard({blog,children}) {
                 <button type="button">Share <i className="fa-solid fa-share"></i></button>
             </div>
         </div>
-        {children}
-        </reactContext.Provider>
+        <Inside />
+        </myContext.Provider>
     )
 }
 
 
 export default function Inside() {
-    const { getReactions } = useContext(reactContext)
+
+    const { getReactions } = useContext(myContext)
 
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -136,7 +137,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} loading={loading}/>
+            <BlogCard key={blog.id} blog={blog}/>
         ))
         )
 
