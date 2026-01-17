@@ -7,7 +7,7 @@ import { formatDistanceToNow } from "date-fns";
 
 const myContext = createContext();
 
-function BlogCard({blog}) {
+function BlogCard({blog, children}) {
 
     const [count, setCount] = useState({
         likes: 0,
@@ -72,7 +72,7 @@ function BlogCard({blog}) {
                 <button type="button">Share <i className="fa-solid fa-share"></i></button>
             </div>
         </div>
-        <Inside />
+        {children}
         </myContext.Provider>
     )
 }
