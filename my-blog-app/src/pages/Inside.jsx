@@ -38,10 +38,8 @@ function BlogCard({blog, children}) {
         }
     }
 
-    useEffect(() => {
-        const blogId = blog.id;
-        const getReactions = async () => {
-
+    async function getReactions() {
+    const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
                 likes: Number(res.data.likes),
@@ -51,8 +49,6 @@ function BlogCard({blog, children}) {
             })
 
         }
-        getReactions();
-    }, [react])
 
     return (
         <myContext.Provider value={{getReactions}}>
