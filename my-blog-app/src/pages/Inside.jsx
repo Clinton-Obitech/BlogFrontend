@@ -1,5 +1,5 @@
 import Mini_hero from "../components/Mini_hero"
-import { useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import api from "../api/axios.js";
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
@@ -7,6 +7,7 @@ import { formatDistanceToNow } from "date-fns";
 
 
 function BlogCard({blog}) {
+    const loading = useContext(blogLoading)
     const [count, setCount] = useState({
         likes: 0,
         hearts: 0,
@@ -50,7 +51,7 @@ function BlogCard({blog}) {
 
         }
         getReactions();
-    }, [react])
+    }, [react, loading])
 
     return (
         <div className={styles.blog}>
@@ -72,10 +73,13 @@ function BlogCard({blog}) {
     )
 }
 
-export default function Inside() {
+export const blogLoading = createContext();
+
+export default function Inside({children}) {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+
 
     const getBlogs = async (selectedDate) => {
         try {
@@ -112,6 +116,7 @@ export default function Inside() {
     return (
         <>
         <Mini_hero state="Inside Naija" />
+        <blogLoading value={loading}>
         <div className={styles.blogsNavigation}>
         <button onClick={goToPreviousDay} type="button">Previous day</button>
         <input
@@ -131,7 +136,8 @@ export default function Inside() {
         )
 
         )}
-        
+        {children}
+        </blogLoading>
         </>
     )
 }
