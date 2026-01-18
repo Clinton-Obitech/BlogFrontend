@@ -6,6 +6,7 @@ export default function Socials() {
         <div className="container">
           <div className='usersCount'>1.6K</div>
           <div className='advert'>
+          <div>
            <h3>Advert</h3>
            <h3>Advert</h3>
            <h3>Advert</h3>
@@ -15,6 +16,7 @@ export default function Socials() {
            <h3>Advert</h3>
            <h3>Advert</h3>
            <h3>Advert</h3>
+           </div>
           </div>
         </div>
         </>

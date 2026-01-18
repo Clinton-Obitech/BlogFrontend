@@ -25,22 +25,29 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    overflow: auto;
+    overflow: hidden;
     position: relative;
-    animation-name: slideAdvert;
-    animation-duration: 20s;
-    animation-fill-mode: both;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+}
+
+.container .advert > div {
+    display: flex;
+    width: max-content;
+    animation: scroll 15s linear infinite;
 }
 
 .container h3 {
-    margin: 0 1rem;
+    white-space: nowrap;
+    padding-right: 60px;
+    font-size: 18px;
 }
 
-@keyframes slideAdvert {
-    from {right: 0;}
-    to {right: 800px}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 
