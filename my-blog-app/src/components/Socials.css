@@ -39,8 +39,8 @@
 }
 
 @keyframes slideAdvert {
-    from {right: 100%;}
-    to {right: 100%;}
+    from {right: 1000px;}
+    to {right: 1000px}
 }
 
 
