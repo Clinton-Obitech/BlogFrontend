@@ -6,12 +6,13 @@ import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
 function BlogCard({blog}) {
+    const [loading, setLoading] = useState(false)
 
     const [count, setCount] = useState({
-        likes: "",
-        hearts: "",
-        laughs: "",
-        dislikes: "",
+        likes: null,
+        hearts: null,
+        laughs: null,
+        dislikes: null,
     })
 
     const formatCount = (num) => {
@@ -29,10 +30,24 @@ function BlogCard({blog}) {
 
     const react = async (type) => {
         const blogId = blog.id;
+
+        if(loading) return;
+        setLoading(true)
+        setCount(prev => ({
+            ...prev,
+            [type]: prev[type] + 1
+        }));
+
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
+            setCount(prev => ({
+            ...prev,
+            [type]: prev[type] - 1
+            }));
             toast.error("Please sign in to react");
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -48,7 +63,7 @@ function BlogCard({blog}) {
         })
         }
         getReactions();
-    }, [react])
+    }, [blog.id])
 
 
     return (
@@ -57,10 +72,10 @@ function BlogCard({blog}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{Number(formatCount(count.likes))}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{Number(formatCount(count.hearts))}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{Number(formatCount(count.laughs))}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{Number(formatCount(count.dislikes))}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(count.likes)}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(count.hearts)}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(count.laughs)}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(count.dislikes)}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
