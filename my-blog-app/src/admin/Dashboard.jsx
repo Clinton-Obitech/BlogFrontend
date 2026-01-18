@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export default function Dashboard() {
     const [admin, setAdmin] = useState({});
-    const [username, setUsername] = useState({});
+    const [username, setUsername] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function Dashboard() {
             console.error(err);
             navigate("/", {replace: true})
             toast.error(err.response?.data?.message)
-            }
+            } 
         }
         getAdmin();
     }, [])
@@ -39,6 +39,7 @@ export default function Dashboard() {
         }
     }
 
+   if (!username) return <p>Loading...</p>
    return (
     <div className={styles.adminHeader}>
     {admin ? <h2>{username.username} Dashboard</h2> : <h2>Loading...</h2>}
