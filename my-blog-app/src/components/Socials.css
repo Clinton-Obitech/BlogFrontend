@@ -19,7 +19,7 @@
 
 .advert {
     animation-name: moving;
-    animation-duration: 2s;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
     position: relative;
     background-color: green;
