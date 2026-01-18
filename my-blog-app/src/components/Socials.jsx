@@ -7,6 +7,9 @@ export default function Socials() {
   <div className="belt-track">
     <div className="item">🚀 ADVERT MOVING</div>
     <div className="item">🚀 ADVERT MOVING</div>
+    <div className="item">🚀 ADVERT MOVING</div>
+    <div className="item">🚀 ADVERT MOVING</div>
+    <div className="item">🚀 ADVERT MOVING</div>
   </div>
 </div>
 
