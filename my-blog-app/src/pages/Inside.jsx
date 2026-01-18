@@ -92,7 +92,6 @@ export default function Inside() {
         } finally {
             setLoading(false)
         }
-        
     }
 
     useEffect(() => {
