@@ -32,19 +32,12 @@ function BlogCard({blog}) {
         const blogId = blog.id;
 
         if(loading) return;
-        setLoading(true)
-        setCount(prev => ({
-            ...prev,
-            [type]: prev[type] + 1
-        }));
+        setLoading(true);
 
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
-            setCount(prev => ({
-            ...prev,
-            [type]: prev[type] - 1
-            }));
+            
             toast.error("Please sign in to react");
         } finally {
             setLoading(false)

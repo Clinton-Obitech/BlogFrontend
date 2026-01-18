@@ -1,8 +1,8 @@
-.socials {
+.container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -10,16 +10,25 @@
     box-shadow: 0px 0px 3px teal;
 }
 
-.socials span {
+.container .usersCount {
     text-align: center;
     background-color: teal;
     padding: 1rem 1.5rem;
     color: white;
     font-family: sans-serif;
     font-size: 1.2rem;
+    flex-basis: 20%;
 }
 
-.icon {
+.container .advert {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: auto;
+}
+
+/*.icon {
     flex-grow: 1;
     padding: 0.7rem 0;
 }
@@ -63,3 +72,18 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+<div className='whatsapp icon'>
+             <i className="fa-brands fa-whatsapp"></i>
+          </div>
+          <div className='instagram icon'>
+             <i className="fa-brands fa-instagram"></i>
+          </div>
+          <div className='twitter icon'>
+             <i className="fa-brands fa-x-twitter"></i>
+          </div>
+          <div className='tiktok icon'>
+             <i className="fa-brands fa-tiktok"></i>
+          </div>
+
+          */

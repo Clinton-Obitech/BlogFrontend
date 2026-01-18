@@ -39,7 +39,7 @@ export default function Dashboard() {
         }
     }
 
-   if (!username) return <div style={{height: "100vh", position: "relative", top: "0"}}></div>
+   if (!username) return <div></div>
 
    return (
     <div className={styles.adminHeader}>
