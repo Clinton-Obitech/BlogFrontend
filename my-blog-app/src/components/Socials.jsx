@@ -11,6 +11,10 @@ export default function Socials() {
            <h3>Advert</h3>
            <h3>Advert</h3>
            <h3>Advert</h3>
+           <h3>Advert</h3>
+           <h3>Advert</h3>
+           <h3>Advert</h3>
+           <h3>Advert</h3>
           </div>
         </div>
         </>
