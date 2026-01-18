@@ -33,6 +33,7 @@
     display: flex;
     width: max-content;
     animation: scroll 15s linear infinite;
+    animation-fill-mode: forwards;
     width: 100%;
 }
 
@@ -50,6 +51,38 @@
     transform: translateX(-100%);
   }
 }
+
+.belt {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+    bottom: 0;
+    padding: 1rem 0;
+    background-color: white;
+    box-shadow: 0px 0px 3px teal;
+}
+
+.belt-track {
+  display: flex;
+  width: max-content;
+  animation: loop 10s linear infinite;
+}
+
+.item {
+  white-space: nowrap;
+  padding-right: 60px;
+  font-size: 20px;
+}
+
+@keyframes loop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 
 
 /*.icon {
