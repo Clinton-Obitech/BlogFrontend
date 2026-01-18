@@ -26,11 +26,22 @@
     flex-direction: row;
     align-items: center;
     overflow: auto;
+    position: relative;
+    animation-name: slideAdvert;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .container h3 {
     margin: 0 1rem;
 }
+
+@keyframes slideAdvert {
+    from {left: 0;}
+    to {left: 800px;}
+}
+
 
 /*.icon {
     flex-grow: 1;
