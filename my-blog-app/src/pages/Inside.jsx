@@ -8,10 +8,10 @@ import { formatDistanceToNow } from "date-fns";
 function BlogCard({blog}) {
 
     const [count, setCount] = useState({
-        likes: null,
-        hearts: null,
-        laughs: null,
-        dislikes: null,
+        likes: "",
+        hearts: "",
+        laughs: "",
+        dislikes: "",
     })
 
     const formatCount = (num) => {
@@ -29,12 +29,10 @@ function BlogCard({blog}) {
 
     const react = async (type) => {
         const blogId = blog.id;
-        setCount(prev => ({...prev, [type]: prev[type] + 1}))
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
             toast.error("Please sign in to react");
-            setCount(prev => ({...prev, [type]: prev[type] - 1}))
         }
     }
 
