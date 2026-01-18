@@ -39,9 +39,8 @@ export default function Dashboard() {
         }
     }
 
-   if (!username) {
-    navigate("/", {replace: true})
-   }
+   if (!username) return <div style={{height: "100vh", position: "relative", top: "0"}}></div>
+
    return (
     <div className={styles.adminHeader}>
     {admin ? <h2>{username.username} Dashboard</h2> : <h2>Loading...</h2>}
