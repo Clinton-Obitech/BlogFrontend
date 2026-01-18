@@ -83,7 +83,6 @@ export default function Inside() {
 
     const getBlogs = async (selectedDate) => {
         try {
-            getReactions()
             setLoading(true)
             const res = await api.get(`/api/inside?date=${selectedDate}`)
             setBlogs(res.data.blogs)
