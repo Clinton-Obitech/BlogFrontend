@@ -9,10 +9,10 @@ function BlogCard({blog}) {
     const [loading, setLoading] = useState(false)
 
     const [count, setCount] = useState({
-        likes: null,
-        hearts: null,
-        laughs: null,
-        dislikes: null,
+        likes: 0,
+        hearts: 0,
+        laughs: 0,
+        dislikes: 0,
     })
 
     const formatCount = (num) => {
