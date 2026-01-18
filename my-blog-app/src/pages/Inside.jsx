@@ -1,19 +1,17 @@
 import Mini_hero from "../components/Mini_hero"
-import { createContext, useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import api from "../api/axios.js";
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
-const myContext = createContext();
-
-function BlogCard({blog, children}) {
+function BlogCard({blog}) {
 
     const [count, setCount] = useState({
-        likes: 0,
-        hearts: 0,
-        laughs: 0,
-        dislikes: 0,
+        likes: null,
+        hearts: null,
+        laughs: null,
+        dislikes: null,
     })
 
     const formatCount = (num) => {
@@ -31,27 +29,31 @@ function BlogCard({blog, children}) {
 
     const react = async (type) => {
         const blogId = blog.id;
+        setCount(prev => ({...prev, [type]: prev[type] + 1}))
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
         } catch (err) {
             toast.error("Please sign in to react");
+            setCount(prev => ({...prev, [type]: prev[type] - 1}))
         }
     }
 
-    async function getReactions() {
-    const blogId = blog.id;
+    useEffect(() => {
+        const getReactions = async () => {
+        const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
             setCount({
                 likes: Number(res.data.likes),
                 hearts: Number(res.data.hearts),
                 laughs: Number(res.data.laughs),
                 dislikes: Number(res.data.dislikes),
-            })
-
+        })
         }
+        getReactions();
+    }, [react])
+
 
     return (
-        <myContext.Provider value={{getReactions}}>
         <div className={styles.blog}>
             <small>{timeAgo(blog.posted_at)}</small>
             <h2>{(blog.title).toUpperCase()}</h2>
@@ -68,15 +70,11 @@ function BlogCard({blog, children}) {
                 <button type="button">Share <i className="fa-solid fa-share"></i></button>
             </div>
         </div>
-        {children}
-        </myContext.Provider>
     )
 }
 
 
 export default function Inside() {
-
-    const { getReactions } = useContext(myContext)
 
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
@@ -116,6 +114,7 @@ export default function Inside() {
         prev.setDate(prev.getDate() - 1);
         setDate(prev.toISOString().split("T")[0]);
     }
+
     return (
         <>
         <Mini_hero state="Inside Naija" />

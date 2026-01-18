@@ -25,6 +25,7 @@ input:disabled {
   cursor: not-allowed;
 }
 
-button:hover {
+button:active {
   opacity: 0.7;
+  box-shadow: 0px 0px 3px solid;
 }
