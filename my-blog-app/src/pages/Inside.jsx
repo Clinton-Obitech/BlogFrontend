@@ -79,10 +79,10 @@ export default function Inside() {
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
     const [count, setCount] = useState({
-        likes: 0,
-        hearts: 0,
-        laughs: 0,
-        dislikes: 0,
+        likes: null,
+        hearts: null,
+        laughs: null,
+        dislikes: null,
     })
 
     useEffect(() => {
