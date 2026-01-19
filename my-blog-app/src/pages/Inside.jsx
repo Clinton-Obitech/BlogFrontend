@@ -150,7 +150,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} reaction={count}/>
+            <BlogCard key={blog.id} blog={blog} reaction={Number(count)}/>
         ))
         )
 
