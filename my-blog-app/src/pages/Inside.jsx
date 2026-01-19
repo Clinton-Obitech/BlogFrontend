@@ -87,7 +87,7 @@ export default function Inside() {
         const getReactions = async () => {
         const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
-            setCount(res.data.reactions)
+            setCount(Number(res.data.reactions))
             /*setCount({
                 likes: Number(res.data.likes),
                 hearts: Number(res.data.hearts),
