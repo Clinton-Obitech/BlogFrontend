@@ -36,7 +36,7 @@ function Header() {
         <>
         <header>
 
-          <h2 onClick={navHome}><i className="fa-solid fa-tv"></i> Blog Website</h2>
+          <h2 style={{cursor: "pointer"}} onClick={navHome}><i className="fa-solid fa-tv"></i> Blog Website</h2>
 
           <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
           <div>
