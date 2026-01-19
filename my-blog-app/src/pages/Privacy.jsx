@@ -3,7 +3,6 @@ import styles from "./Page.module.css";
 export default function Privacy() {
     return (
         <div className={styles.tacp}>
-  <h3>Privacy Policies</h3>
   <p>At <strong>Blog website</strong>, your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your information.</p>
 
   <h4>Information We Collect</h4>

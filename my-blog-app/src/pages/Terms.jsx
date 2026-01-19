@@ -3,7 +3,6 @@ import styles from "./Page.module.css";
 export default function Terms() {
  return (
   <div className={styles.tacp}>
-  <h3>Terms and Condition</h3>
   <p>Welcome to <strong>Blog website</strong>. By accessing or using this website, you agree to comply with and be bound by these Terms and Conditions.</p>
 
   <h4>Use of Content</h4>

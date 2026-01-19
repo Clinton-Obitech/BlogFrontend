@@ -20,7 +20,6 @@ export default function UsersInfo() {
            {loading ? (<h3 style={{margin: "0.7rem 1rem 0"}}>Loading...</h3>) : (
 
             <ul>
-                <h2>Your Information</h2>
                 <li><span>firstname</span>{user.firstname}</li>
                 <li><span>lastname</span>{user.lastname}</li>
                 <li><span>username</span>{user.username}</li>

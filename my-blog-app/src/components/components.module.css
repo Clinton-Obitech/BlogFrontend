@@ -41,20 +41,21 @@
 }
 
 .userInfoBtn {
-    border: none;
+    border: 1.5px solid black;
     padding: 0.4rem 0.4rem 0.4rem 1rem;
     width: 80%;
     margin-top: 1rem;
-    color: teal;
-    background-color: rgba(0, 0, 0, 0.9);
+    color: rgba(0, 0, 0, 0.9);
+    background-color: white;
     border-radius: 5px;
     font-size: 1rem;
     text-align: left;
+    box-shadow: 0px 0px 3px teal;
 }
 
 .openLabel {
     background-color: white;
     border: none;
     font-size: 1.3rem;
-    padding: 1rem 2rem 0;
+    padding: 1rem 1rem 0;
 }
