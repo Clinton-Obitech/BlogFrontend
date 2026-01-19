@@ -1,4 +1,4 @@
-.container {
+.socials {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -11,26 +11,12 @@
     box-shadow: 0px 0px 3px teal;
 }
 
-.movingAdvert {
-    overflow: hidden;
-    padding: 0.5rem;
-    width: 100%;
+.socials span {
+    background-color: teal;
+    color: white;
 }
 
-.advert {
-    animation-name: moving;
-    animation-duration: 20s;
-    animation-iteration-count: infinite;
-    position: relative;
-    background-color: green;
-}
-
-@keyframes moving {
-     from {transform: translateX(0);}
-     to {transform: translateX(100%);}
-}
-
-/*.icon {
+.icon {
     flex-grow: 1;
     padding: 0.7rem 0;
 }
@@ -74,18 +60,3 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-<div className='whatsapp icon'>
-             <i className="fa-brands fa-whatsapp"></i>
-          </div>
-          <div className='instagram icon'>
-             <i className="fa-brands fa-instagram"></i>
-          </div>
-          <div className='twitter icon'>
-             <i className="fa-brands fa-x-twitter"></i>
-          </div>
-          <div className='tiktok icon'>
-             <i className="fa-brands fa-tiktok"></i>
-          </div>
-
-          */

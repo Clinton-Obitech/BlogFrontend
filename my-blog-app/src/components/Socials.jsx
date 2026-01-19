@@ -3,11 +3,21 @@ import './Socials.css'
 export default function Socials() {
     return (
         <>
-        <div className='container'>
-         <div className='movingAdvert'>
-           <div className='advert'>Advert</div>
-         </div>
-        </div>
+        <section className='socials'>
+         <span>1.6k</span>
+         <div className='whatsapp icon'>
+             <i className="fa-brands fa-whatsapp"></i>
+          </div>
+          <div className='instagram icon'>
+             <i className="fa-brands fa-instagram"></i>
+          </div>
+          <div className='twitter icon'>
+             <i className="fa-brands fa-x-twitter"></i>
+          </div>
+          <div className='tiktok icon'>
+             <i className="fa-brands fa-tiktok"></i>
+          </div>
+        </section>
         </>
     )
 }
