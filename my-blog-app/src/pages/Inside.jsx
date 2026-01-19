@@ -78,7 +78,7 @@ export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const [count, setCount] = useState({})
+    const [count, setCount] = useState(null)
 
     useEffect(() => {
 
@@ -150,7 +150,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} reaction={count}/>
+            <BlogCard key={blog.id} blog={blog} reaction={Number(count)}/>
         ))
         )
 
