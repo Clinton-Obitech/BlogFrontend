@@ -254,6 +254,7 @@
     background-color: white;
     padding: 1rem 1rem -0.5rem;
     border-bottom: 1.4px solid grey;
+    display: block;
 }
 
 .loginContent button {
