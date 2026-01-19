@@ -4,6 +4,349 @@ import api from "../api/axios.js";
 import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
+/* ================= BLOG CARD ================= */
+
+function BlogCard({ blog }) {
+  const [loading, setLoading] = useState(false);
+
+  const [count, setCount] = useState(blog.reactions);
+
+  const formatCount = (num) => {
+    return new Intl.NumberFormat("en", {
+      notation: "compact",
+      maximumFractionDigits: 1,
+    }).format(num);
+  };
+
+  const timeAgo = (date) => {
+    return formatDistanceToNow(new Date(date), { addSuffix: true });
+  };
+
+  const react = async (type) => {
+    if (loading) return; // ✅ no spam clicking
+    setLoading(true);
+
+    // optimistic update
+    setCount((prev) => ({
+      ...prev,
+      [type]: prev[type] + 1,
+    }));
+
+    try {
+      const res = await api.post(
+        `/api/inside/reactions/${blog.id}`,
+        { reaction: type }
+      );
+
+      // same reaction clicked → removed
+      if (res.data.action === "removed") {
+        setCount((prev) => ({
+          ...prev,
+          [type]: Math.max(prev[type] - 1, 0),
+        }));
+      }
+    } catch (err) {
+      toast.error("Please sign in to react");
+      setCount(blog.reactions); // rollback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.blog}>
+      <small>{timeAgo(blog.posted_at)}</small>
+
+      <h2>{blog.title.toUpperCase()}</h2>
+
+      <img src={blog.image} alt="" />
+
+      <div className={styles.rate}>
+        <button disabled={loading} onClick={() => react("like")}>
+          <i style={{ color: "green" }} className="fa-solid fa-thumbs-up"></i>
+          <span>{formatCount(count.likes)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("heart")}>
+          <i style={{ color: "red" }} className="fa-solid fa-heart"></i>
+          <span>{formatCount(count.hearts)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("laugh")}>
+          <i
+            style={{ color: "gold" }}
+            className="fa-solid fa-face-laugh"
+          ></i>
+          <span>{formatCount(count.laughs)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("dislike")}>
+          <i
+            style={{ color: "teal" }}
+            className="fa-solid fa-thumbs-down"
+          ></i>
+          <span>{formatCount(count.dislikes)}</span>
+        </button>
+      </div>
+
+      <h4>
+        Posted By <span>{blog.author.toLowerCase()}</span>
+      </h4>
+
+      <p>{blog.content}</p>
+
+      <div className={styles.share}>
+        <button type="button">
+          Share <i className="fa-solid fa-share"></i>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ================= MAIN PAGE ================= */
+
+export default function Inside() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+
+  const getBlogs = async (selectedDate) => {
+    try {
+      setLoading(true);
+
+      const res = await api.get(`/api/inside?date=${selectedDate}`);
+
+      const blogsWithReactions = await Promise.all(
+        res.data.blogs.map(async (blog) => {
+          const r = await api.get(
+            `/api/inside/reactions/${blog.id}`
+          );
+
+          return {
+            ...blog,
+            reactions: {
+              likes: Number(r.data.likes),
+              hearts: Number(r.data.hearts),
+              laughs: Number(r.data.laughs),
+              dislikes: Number(r.data.dislikes),
+            },
+          };
+        })
+      );
+
+      setBlogs(blogsWithReactions);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getBlogs(date);
+  }, [date]);
+
+  const goToNextDay = () => {
+    const next = new Date(date);
+    next.setDate(next.getDate() + 1);
+    setDate(next.toISOString().split("T")[0]);
+  };
+
+  const goToPreviousDay = () => {
+    const prev = new Date(date);
+    prev.setDate(prev.getDate() - 1);
+    setDate(prev.toISOString().split("T")[0]);
+  };
+
+  return (
+    <>
+      <Mini_hero state="Inside Naija" />
+
+      <div className={styles.blogsNavigation}>
+        <button onClick={goToPreviousDay}>Previous day</button>
+
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+
+        <button onClick={goToNextDay}>Next day</button>
+      </div>
+
+      {loading ? (
+        <p className={styles.noBlogsForDate}>Loading...</p>
+      ) : blogs.length === 0 ? (
+        <p className={styles.noBlogsForDate}>
+          No blogs found for this date.
+        </p>
+      ) : (
+        blogs.map((blog) => (
+          <BlogCard key={blog.id} blog={blog} />
+        ))
+      )}
+    </>
+  );
+}
+
+
+
+/*function BlogCard({ blog }) {
+  const [loading, setLoading] = useState(false);
+
+  const [count, setCount] = useState(blog.reactions);
+
+  const formatCount = (num) => {
+    return new Intl.NumberFormat("en", {
+      notation: "compact",
+      maximumFractionDigits: 1,
+    }).format(num);
+  };
+
+  const timeAgo = (date) => {
+    return formatDistanceToNow(new Date(date), { addSuffix: true });
+  };
+
+  const react = async (type) => {
+    if (loading) return; // ✅ no spam clicking
+    setLoading(true);
+
+    // optimistic update
+    setCount((prev) => ({
+      ...prev,
+      [type]: prev[type] + 1,
+    }));
+
+    try {
+      const res = await api.post(
+        `/api/inside/reactions/${blog.id}`,
+        { reaction: type }
+      );
+
+      // same reaction clicked → removed
+      if (res.data.action === "removed") {
+        setCount((prev) => ({
+          ...prev,
+          [type]: Math.max(prev[type] - 1, 0),
+        }));
+      }
+    } catch (err) {
+      toast.error("Please sign in to react");
+      setCount(blog.reactions); // rollback
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className={styles.blog}>
+      <small>{timeAgo(blog.posted_at)}</small>
+
+      <h2>{blog.title.toUpperCase()}</h2>
+
+      <img src={blog.image} alt="" />
+
+      <div className={styles.rate}>
+        <button disabled={loading} onClick={() => react("like")}>
+          <i style={{ color: "green" }} className="fa-solid fa-thumbs-up"></i>
+          <span>{formatCount(count.likes)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("heart")}>
+          <i style={{ color: "red" }} className="fa-solid fa-heart"></i>
+          <span>{formatCount(count.hearts)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("laugh")}>
+          <i
+            style={{ color: "gold" }}
+            className="fa-solid fa-face-laugh"
+          ></i>
+          <span>{formatCount(count.laughs)}</span>
+        </button>
+
+        <button disabled={loading} onClick={() => react("dislike")}>
+          <i
+            style={{ color: "teal" }}
+            className="fa-solid fa-thumbs-down"
+          ></i>
+          <span>{formatCount(count.dislikes)}</span>
+        </button>
+      </div>
+
+      <h4>
+        Posted By <span>{blog.author.toLowerCase()}</span>
+      </h4>
+
+      <p>{blog.content}</p>
+
+      <div className={styles.share}>
+        <button type="button">
+          Share <i className="fa-solid fa-share"></i>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default function Inside() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+
+  const getBlogs = async (selectedDate) => {
+    try {
+      setLoading(true);
+
+      const res = await api.get(`/api/inside?date=${selectedDate}`);
+
+      const blogsWithReactions = await Promise.all(
+        res.data.blogs.map(async (blog) => {
+          const r = await api.get(
+            `/api/inside/reactions/${blog.id}`
+          );
+
+          return {
+            ...blog,
+            reactions: {
+              likes: Number(r.data.likes),
+              hearts: Number(r.data.hearts),
+              laughs: Number(r.data.laughs),
+              dislikes: Number(r.data.dislikes),
+            },
+          };
+        })
+      );
+
+      setBlogs(blogsWithReactions);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getBlogs(date);
+  }, [date]);
+
+  const goToNextDay = () => {
+    const next = new Date(date);
+    next.setDate(next.getDate() + 1);
+    setDate(next.toISOString().split("T")[0]);
+  };
+
+  const goToPreviousDay = () => {
+    const prev = new Date(date);
+    prev.setDate
+
+
+/*
 
 function BlogCard({blog}) {
     const [loading, setLoading] = useState(false)
@@ -56,7 +399,7 @@ function BlogCard({blog}) {
         })
         }
         getReactions();
-    }, [blog.id])
+    }, [react])
 
 
     return (
@@ -143,4 +486,4 @@ export default function Inside() {
         )}
         </>
     )
-}
+}*/
