@@ -85,6 +85,25 @@ export default function Inside() {
         dislikes: 0,
     })
 
+    useEffect(() => {
+
+    {blogs.map(blog => {
+        
+        const getReactions = async () => {
+        const blogId = blog.id;
+            const res = await api.get(`/api/inside/reactions/${blogId}`)
+            setCount({
+                likes: Number(res.data.likes),
+                hearts: Number(res.data.hearts),
+                laughs: Number(res.data.laughs),
+                dislikes: Number(res.data.dislikes),
+        })
+        }
+        getReactions();
+        
+        })}
+        })
+
 
     const getBlogs = async (selectedDate) => {
         try {
@@ -117,25 +136,6 @@ export default function Inside() {
         prev.setDate(prev.getDate() - 1);
         setDate(prev.toISOString().split("T")[0]);
     }
-
-    useEffect(() => {
-
-    {blogs.map(blog => {
-        
-        const getReactions = async () => {
-        const blogId = blog.id;
-            const res = await api.get(`/api/inside/reactions/${blogId}`)
-            setCount({
-                likes: Number(res.data.likes),
-                hearts: Number(res.data.hearts),
-                laughs: Number(res.data.laughs),
-                dislikes: Number(res.data.dislikes),
-        })
-        }
-        getReactions();
-        
-        })}
-        })
 
     return (
         <>
