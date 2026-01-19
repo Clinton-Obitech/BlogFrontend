@@ -38,17 +38,17 @@ export default function SideNav({user, setUser}) {
       }
     }
   const navItems = [
-    {key: "user", label: "User Information", component: <UserInfo />},
-    {key: "settings", label: "User Settings", component: <Settings /> },
-    {key: "terms", label: "Terms", component: <Terms />},
-    {key: "privacy", label: "Privacy", component: <Privacy />},
-    {key: "about", label: "About", component: <About />}
+    {key: "user", label: "User Information", openLabel: "Your Information", component: <UserInfo />},
+    {key: "settings", label: "User Settings", openLabel: "Change Information", component: <Settings /> },
+    {key: "terms", label: "Terms", openLabel: "Terms and Condition", component: <Terms />},
+    {key: "privacy", label: "Privacy", openLabel: "Privacy Policy", component: <Privacy />},
+    {key: "about", label: "About", openLabel: "About Us", component: <About />}
   ]
 
   const navOfflineItems = [
-    {key: "terms", label: "Terms", component: <Terms />},
-    {key: "privacy", label: "Privacy", component: <Privacy />},
-    {key: "about", label: "About", component: <About />}
+    {key: "terms", label: "Terms", openLabel: "Terms and Condition", component: <Terms />},
+    {key: "privacy", label: "Privacy", openLabel: "Privacy Policy", component: <Privacy />},
+    {key: "about", label: "About", openLabel: "About Us", component: <About />}
   ]
 
   const handleToggle = (key) => {
@@ -67,7 +67,7 @@ export default function SideNav({user, setUser}) {
             {navItems.map(item => (
             user && (
                 <div key={item.key}>
-              <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{active === item.key ? "Openend" : item.label}</button>
+              <button className={active === item.key ? styles.openLabel : styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{active === item.key ? item.openLabel : item.label}</button>
 
               {active === item.key && (
                 <>
