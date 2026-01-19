@@ -26,10 +26,6 @@ function BlogCard({blog, reactions}) {
 
         if(loading) return;
         setLoading(true);
-        
-        for (let a in reactions) {
-            reactions[a] + 1;
-        }
 
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
