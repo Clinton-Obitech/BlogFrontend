@@ -54,4 +54,7 @@
 
 .openLabel {
     background-color: white;
+    border: none;
+    font-size: 1.3rem;
+    padding: 1rem 2rem 0;
 }
