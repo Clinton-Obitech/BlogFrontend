@@ -56,7 +56,7 @@ function BlogCard({blog}) {
         })
         }
         getReactions();
-    }, [])
+    }, [blog.id])
 
 
     return (
