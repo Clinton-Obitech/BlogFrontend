@@ -58,10 +58,10 @@ function BlogCard({blog, reaction}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(Number(reaction.likes))}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(Number(reaction.hearts))}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(Number(reaction.laughs))}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(Number(reaction.dislikes))}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reaction[0])}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reaction[1])}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reaction[2])}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reaction[3])}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
@@ -78,7 +78,7 @@ export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const [count, setCount] = useState(null)
+    const [count, setCount] = useState([])
 
     useEffect(() => {
 
@@ -87,7 +87,7 @@ export default function Inside() {
         const getReactions = async () => {
         const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
-            setCount(Number(res.data.reactions))
+            setCount([res.data.likes, res.data.hearts, res.data.laughs, res.data.dislikes])
             /*setCount({
                 likes: Number(res.data.likes),
                 hearts: Number(res.data.hearts),
@@ -150,7 +150,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} reaction={Number(count)}/>
+            <BlogCard key={blog.id} blog={blog} reaction={count}/>
         ))
         )
 
