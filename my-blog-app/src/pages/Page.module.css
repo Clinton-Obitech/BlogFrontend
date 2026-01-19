@@ -253,7 +253,6 @@
 .loginContent > span {
     background-color: white;
     padding: 1rem 1rem 0;
-    border-bottom: 1.4px solid grey;
 }
 
 .loginContent button {

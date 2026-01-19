@@ -82,7 +82,7 @@ export default function SideNav({user, setUser}) {
           {navOfflineItems.map(item => (
             !user && (
                 <div key={item.key}>
-              <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{item.label}</button>
+              <button className={active === item.key ? styles.openLabel : styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{active === item.key ? item.openLabel : item.label} {active === item.key ? <i style={{color: "teal", justifySelf: "flex-end"}} className="fa-solid fa-circle-xmark"></i> : null}</button>
 
               {active === item.key && (
                 <>
