@@ -58,7 +58,7 @@ function BlogCard({blog, reaction}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(Number(reaction[0]))}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reaction[0])}</span></button>
                 <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reaction[1])}</span></button>
                 <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reaction[2])}</span></button>
                 <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reaction[3])}</span></button>
@@ -78,9 +78,35 @@ export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-    const [count, setCount] = useState([])
+    const [reactions, setReactions] = useState({});
 
-    useEffect(() => {
+
+   useEffect(() => {
+  const fetchReactions = async () => {
+    for (const blog of blogs) {
+      const res = await api.get(
+        `/api/inside/reactions/${blog.id}`
+      );
+
+      setReactions(prev => ({
+        ...prev,
+        [blog.id]: [
+          Number(res.data.likes),
+          Number(res.data.hearts),
+          Number(res.data.laughs),
+          Number(res.data.dislikes),
+        ]
+      }));
+    }
+  };
+
+  if (blogs.length > 0) {
+    fetchReactions();
+  }
+}, [blogs]);
+
+
+    /*useEffect(() => {
 
     {blogs.map(blog => {
         
@@ -93,12 +119,12 @@ export default function Inside() {
                 hearts: Number(res.data.hearts),
                 laughs: Number(res.data.laughs),
                 dislikes: Number(res.data.dislikes),
-        })*/
+        })
         }
         getReactions();
         
         })}
-        })
+        })*/
 
 
     const getBlogs = async (selectedDate) => {
@@ -150,7 +176,9 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} reaction={count}/>
+            <BlogCard
+            blog={blog}
+           reaction={reactions[blog.id] || [0,0,0,0]} />
         ))
         )
 
