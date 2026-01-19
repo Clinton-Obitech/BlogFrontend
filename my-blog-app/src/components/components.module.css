@@ -41,7 +41,7 @@
 }
 
 .userInfoBtn {
-    border: 1.5px solid black;
+    border: 1.2px solid black;
     padding: 0.4rem 0.4rem 0.4rem 1rem;
     width: 80%;
     margin-top: 1rem;
@@ -50,7 +50,7 @@
     border-radius: 5px;
     font-size: 1rem;
     text-align: left;
-    box-shadow: 0px 0px 3px teal;
+    box-shadow: 0px 0px 2px teal;
 }
 
 .openLabel {
