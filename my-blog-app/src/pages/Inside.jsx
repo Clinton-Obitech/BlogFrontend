@@ -5,15 +5,8 @@ import styles from "./Page.module.css"
 import { toast } from "react-toastify"
 import { formatDistanceToNow } from "date-fns";
 
-function BlogCard({blog}) {
+function BlogCard({blog, reactions}) {
     const [loading, setLoading] = useState(false)
-
-    const [count, setCount] = useState({
-        likes: 0,
-        hearts: 0,
-        laughs: 0,
-        dislikes: 0,
-    })
 
     const formatCount = (num) => {
     return new Intl.NumberFormat("en", {
@@ -33,6 +26,10 @@ function BlogCard({blog}) {
 
         if(loading) return;
         setLoading(true);
+        
+        for (let a in reactions) {
+            reactions[a] + 1;
+        }
 
         try {
             await api.post(`/api/inside/reactions/${blogId}`, {reaction: type});
@@ -44,7 +41,7 @@ function BlogCard({blog}) {
         }
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         const getReactions = async () => {
         const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
@@ -56,7 +53,7 @@ function BlogCard({blog}) {
         })
         }
         getReactions();
-    }, [react])
+    }, [react])*/
 
 
     return (
@@ -65,10 +62,10 @@ function BlogCard({blog}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(count.likes)}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(count.hearts)}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(count.laughs)}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(count.dislikes)}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reactions[0])}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reactions[1])}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reactions[2])}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reactions[3])}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
@@ -85,6 +82,12 @@ export default function Inside() {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false)
     const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+    const [count, setCount] = useState({
+        likes: 0,
+        hearts: 0,
+        laughs: 0,
+        dislikes: 0,
+    })
 
 
     const getBlogs = async (selectedDate) => {
@@ -119,6 +122,22 @@ export default function Inside() {
         setDate(prev.toISOString().split("T")[0]);
     }
 
+    {blogs.map(blog => {
+        useEffect(() => {
+        const getReactions = async () => {
+        const blogId = blog.id;
+            const res = await api.get(`/api/inside/reactions/${blogId}`)
+            setCount({
+                likes: Number(res.data.likes),
+                hearts: Number(res.data.hearts),
+                laughs: Number(res.data.laughs),
+                dislikes: Number(res.data.dislikes),
+        })
+        }
+        getReactions();
+        })
+    })}
+
     return (
         <>
         <Mini_hero state="Inside Naija" />
@@ -136,7 +155,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog}/>
+            <BlogCard key={blog.id} blog={blog} reactions={[count.likes, count.hearts, count.laughs, count.dislikes]}/>
         ))
         )
 
