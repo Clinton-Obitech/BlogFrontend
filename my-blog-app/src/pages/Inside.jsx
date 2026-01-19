@@ -58,10 +58,10 @@ function BlogCard({blog, reactions}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reactions[0])}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reactions[1])}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reactions[2])}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reactions[3])}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reactions.likes)}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reactions.hearts)}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reactions.laughs)}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reactions.dislikes)}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
@@ -151,7 +151,7 @@ export default function Inside() {
             <p className={styles.noBlogsForDate}>No blogs found for this date.</p>
         ) : (
             blogs.map(blog => (
-            <BlogCard key={blog.id} blog={blog} reactions={[count.likes, count.hearts, count.laughs, count.dislikes]}/>
+            <BlogCard key={blog.id} blog={blog} reactions={count}/>
         ))
         )
 
