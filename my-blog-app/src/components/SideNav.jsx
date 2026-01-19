@@ -57,7 +57,7 @@ export default function SideNav({user, setUser}) {
     return (
         <>
         <div className={styles.sideNav}>
-        <i onClick={() => setMenuOpen(!menuOpen)} className={!menuOpen ? "fa-solid fa-bars" : "fa-solid fa-xmark"}></i>
+        <i onClick={() => {setMenuOpen(!menuOpen); setActive(null)}} className={!menuOpen ? "fa-solid fa-bars" : "fa-solid fa-xmark"}></i>
         {menuOpen && (
           <div className={styles.dropDiv}>
           {user ?  
