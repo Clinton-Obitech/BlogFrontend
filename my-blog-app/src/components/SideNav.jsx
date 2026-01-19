@@ -67,7 +67,7 @@ export default function SideNav({user, setUser}) {
             {navItems.map(item => (
             user && (
                 <div key={item.key}>
-              <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{item.label}</button>
+              <button className={styles.userInfoBtn} type="button" onClick={() => handleToggle(item.key)}>{active === item.key ? "Openend" : item.label}</button>
 
               {active === item.key && (
                 <>
