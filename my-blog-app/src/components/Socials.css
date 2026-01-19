@@ -5,7 +5,6 @@
     justify-content: flex-start;
     position: fixed;
     bottom: 0;
-    padding: 1rem 0;
     width: 100%;
     background-color: white;
     box-shadow: 0px 0px 3px teal;
@@ -14,6 +13,7 @@
 .socials span {
     background-color: teal;
     color: white;
+    padding: 1rem;
 }
 
 .icon {
