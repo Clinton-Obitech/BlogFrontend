@@ -118,8 +118,10 @@ export default function Inside() {
         setDate(prev.toISOString().split("T")[0]);
     }
 
+    useEffect(() => {
+
     {blogs.map(blog => {
-        useEffect(() => {
+        
         const getReactions = async () => {
         const blogId = blog.id;
             const res = await api.get(`/api/inside/reactions/${blogId}`)
@@ -131,8 +133,9 @@ export default function Inside() {
         })
         }
         getReactions();
+        
+        })}
         })
-    })}
 
     return (
         <>
