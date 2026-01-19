@@ -58,10 +58,10 @@ function BlogCard({blog, reaction}) {
             <h2>{(blog.title).toUpperCase()}</h2>
             <img src={blog.image}/>
             <div id="rate-btn" className={styles.rate}>
-                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(reaction.likes)}</span></button>
-                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(reaction.hearts)}</span></button>
-                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(reaction.laughs)}</span></button>
-                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(reaction.dislikes)}</span></button>
+                <button onClick={() => react("like")}><i style={{color: "green"}} className="fa-solid fa-thumbs-up"></i><span>{formatCount(Number(reaction.likes))}</span></button>
+                <button onClick={() => react("heart")}><i style={{color: "red"}} className="fa-solid fa-heart"></i><span>{formatCount(Number(reaction.hearts))}</span></button>
+                <button onClick={() => react("laugh")}><i style={{color: "gold"}} className="fa-solid fa-face-laugh"></i><span>{formatCount(Number(reaction.laughs))}</span></button>
+                <button onClick={() => react("dislike")}><i style={{color: "teal"}} className="fa-solid fa-thumbs-down"></i><span>{formatCount(Number(reaction.dislikes))}</span></button>
             </div>
             <h4>Posted By <span>{(blog.author).toLowerCase()}</span></h4>
             <p>{blog.content}</p>
